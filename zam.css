@@ -1,4 +1,39 @@
+/*FONTS (SFPRO [REGULAR, MEDIUM, BOLD]*/
+@font-face {
+    font-family: SFProRegular;
+    src: url(fonts/SFPRODISPLAYREGULAR.OTF);
+}
+
+@font-face {
+    font-family: SFProBold;
+    src: url(fonts/SFPRODISPLAYBOLD.OTF);
+}
+
+@font-face {
+    font-family: SFProMedium;
+    src: url(fonts/SFPRODISPLAYMEDIUM.OTF);
+}
+
 div.accedi {
     background-color: white;
     border-radius: 30px;
+    width: 1302px;
+    height: 520px;
+    margin: auto;
+    padding-left: 50px;
+}
+
+h1.accedi {
+    font-family: SFProBold;
+    font-size: 36px;
+}
+
+p.accedi {
+    font-family: SFProRegular;
+}
+
+h2.accedi {
+    font-family: SFProMedium;
+    color: #545454;
+    font-size: 24px;
 }
