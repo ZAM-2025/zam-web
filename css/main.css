@@ -53,11 +53,29 @@ body{
     flex-wrap: nowrap;
 }
 
+#Z{
+    top: 16px;
+    position: fixed;
+    width: 35px;
+    color: var(--Bianco);
+    align-content: center;
+}
+
 #PulsanteIcona{
     display: block;
     color: var(--Bianco);
     background-color: unset;
     padding-bottom: 25px;
+    border: 0;
+}
+
+#PulsanteAccount{
+    bottom: 16px;
+    position: fixed;
+    width: 35px;
+    color: var(--Bianco);
+    background-color: unset;
+    align-content: center;
     border: 0;
 }
 
