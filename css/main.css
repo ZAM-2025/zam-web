@@ -7,6 +7,9 @@
 
     --Rosso: #AF0202;
     --Verde: #02AF16;
+
+    --Sidebar-Pad: 10px;
+    --Sidebar-Gap: 25px;
 }
 
 /*Fonts*/
@@ -39,20 +42,6 @@ body{
     margin: 0%;
 }
 
-/*Sidebar*/
-#Sidebar{
-    background-color: var(--GrigioScuro);
-    height: 100%;
-    width: 63px;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    align-content: stretch;
-    flex-wrap: nowrap;
-}
-
 #Z{
     top: 16px;
     position: fixed;
@@ -65,7 +54,6 @@ body{
     display: block;
     color: var(--Bianco);
     background-color: unset;
-    padding-bottom: 25px;
     border: 0;
 }
 
@@ -81,4 +69,48 @@ body{
 
 #Icona{
     font-size: 35px;
+}
+
+/* Sidebar in elemento custom (per gestirlo in JS)*/
+zam-sidebar {
+    background-color: var(--GrigioScuro);
+    height: 100%;
+    width: 63px;
+
+    position: fixed;
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+    align-content: stretch;
+
+    flex-wrap: nowrap;
+
+    gap: var(--Sidebar-Gap);
+}
+
+zam-sidebar > :first-child {
+    margin-top: var(--Sidebar-Pad);
+}
+
+zam-sidebar > :last-child {
+    margin-bottom: var(--Sidebar-Pad);
+}
+
+span[id="Icona"] {
+    cursor: pointer;
+}
+
+zam-spacer {
+    flex: 1;
+}
+
+zam-icon {
+    background-image: url("../immagini/Z.png");
+    background-repeat: no-repeat;
+
+    width: 35px;
+    height: 35px;
 }
