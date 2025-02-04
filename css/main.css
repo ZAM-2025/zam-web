@@ -40,6 +40,7 @@
 /*Body*/
 body{
     margin: 0%;
+    background-color: var(--GrigioChiaro);
 }
 
 #Z{
@@ -108,7 +109,7 @@ zam-spacer {
 }
 
 zam-icon {
-    background-image: url("../immagini/Z.png");
+    background-image: url("../svg/Z.svg");
     background-repeat: no-repeat;
 
     width: 35px;
