@@ -10,6 +10,16 @@
 
     --Sidebar-Pad: 10px;
     --Sidebar-Gap: 25px;
+    --Sidebar-Width-Closed: 63px;
+
+    --Sidebar-Width-Open: 25vw;
+    --Sidebar-LPad-Open: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+    :root {
+        --Sidebar-Width-Open: 100vw;
+    }
 }
 
 /*Fonts*/
@@ -43,7 +53,7 @@ body{
     background-color: var(--GrigioChiaro);
 }
 
-#Z{
+#Z {
     top: 16px;
     position: fixed;
     width: 35px;
@@ -51,11 +61,22 @@ body{
     align-content: center;
 }
 
-#PulsanteIcona{
+#PulsanteIcona {
     display: block;
     color: var(--Bianco);
     background-color: unset;
     border: 0;
+
+    cursor: pointer;
+    user-select: none;
+
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+
+    width: fit-content;
 }
 
 #PulsanteAccount{
@@ -66,6 +87,9 @@ body{
     background-color: unset;
     align-content: center;
     border: 0;
+
+    cursor: pointer;
+    user-select: none;
 }
 
 #Icona{
@@ -76,20 +100,31 @@ body{
 zam-sidebar {
     background-color: var(--GrigioScuro);
     height: 100%;
-    width: 63px;
+    width: calc(35px + (var(--Sidebar-LPad-Open) / 2));
 
     position: fixed;
     display: flex;
 
     flex-direction: column;
 
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     align-content: stretch;
+    padding-left: var(--Sidebar-LPad-Open);
+    padding-right: var(--Sidebar-LPad-Open);
 
     flex-wrap: nowrap;
 
     gap: var(--Sidebar-Gap);
+
+    z-index: 2 !important;
+
+    transition: width 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    border-right: 1px var(--GrigioChiaro) solid;
+
+    -webkit-box-shadow: 24px 0px 50px -3px rgba(0,0,0,0.40); 
+    box-shadow: 24px 0px 50px -3px rgba(0,0,0,0.40);
 }
 
 zam-sidebar > :first-child {
@@ -98,6 +133,13 @@ zam-sidebar > :first-child {
 
 zam-sidebar > :last-child {
     margin-bottom: var(--Sidebar-Pad);
+}
+
+zam-sidebar[open] {
+    width: var(--Sidebar-Width-Open);
+    align-items: flex-start;
+    
+    padding-left: var(--Sidebar-LPad-Open);
 }
 
 span[id="Icona"] {
@@ -109,9 +151,17 @@ zam-spacer {
 }
 
 zam-icon {
+    margin-left: calc(var(--Sidebar-LPad-Open) / 4);
     background-image: url("../svg/Z.svg");
     background-repeat: no-repeat;
 
     width: 35px;
     height: 35px;
+
+    cursor: pointer;
+    user-select: none;
+}
+
+#zam-map {
+    z-index: -1 !important;
 }

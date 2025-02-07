@@ -5,14 +5,26 @@
 
         <link rel="icon" type="image/x-icon" href="favicon.ico">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="lib/zam-map/zam-map.css">
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+        <!-- Make sure you put this AFTER Leaflet's CSS -->
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+
         <script type="text/javascript" src="js/Sidebar.js"></script>
         <script type="text/javascript" src="js/ZamIcon.js"></script>
+        <script type="text/javascript" src="lib/zam-map/zam-map.js"></script>
+        <script type="text/javascript" src="js/HomePage.js"></script>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body style="overflow-x: hidden;" onload="IconLoader()">
-        <zam-sidebar>
-            <zam-icon></zam-icon>
+    <body style="overflow-x: hidden;">
+        <zam-sidebar id="zam-sidebar">
+            <zam-icon id="sidebar-icon"></zam-icon>
 
             <zam-spacer></zam-spacer>
  
@@ -29,6 +41,5 @@
                 <img src = "svg/Account.svg" style="width:29px;height:auto;"/>
             </button>
         </zam-sidebar>
-        
     </body>
 </html>

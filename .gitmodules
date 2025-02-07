@@ -1,0 +1,3 @@
+[submodule "lib/zam-map"]
+	path = lib/zam-map
+	url = https://github.com/ZAM-2025/zam-map
