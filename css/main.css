@@ -12,7 +12,7 @@
     --Sidebar-Gap: 25px;
     --Sidebar-Width-Closed: 63px;
 
-    --Sidebar-Width-Open: 25vw;
+    --Sidebar-Width-Open: 21vw;
     --Sidebar-LPad-Open: 15px;
 }
 
@@ -61,8 +61,19 @@ body{
     align-content: center;
 }
 
+#EsciAccount{
+    display: none;
+    width: 100%;
+    text-align: center;
+    color: var(--Rosso);
+    background-color: unset;
+    border: 0;
+    font-weight: bold;
+    font-size: 8px;
+}
+
 #PulsanteIcona {
-    display: block;
+    display: flex;
     color: var(--Bianco);
     background-color: unset;
     border: 0;
@@ -76,7 +87,31 @@ body{
     -o-user-drag: none;
     user-drag: none;
 
-    width: fit-content;
+    width: inherit;
+}
+
+#Sidebar-Account{
+    display: flex;
+    align-self: anchor-center;
+    color: var(--Bianco);
+    background-color: unset;
+    border: 0;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    width: inherit;
+    flex-wrap: wrap;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    padding-left: 20px;
+    width: auto;
+    align-items: center;
+    align-content: center;
 }
 
 #PulsanteAccount{
@@ -127,6 +162,37 @@ zam-sidebar {
     box-shadow: 24px 0px 50px -3px rgba(0,0,0,0.40);
 }
 
+#SidebarText {
+    font-size: 23px;
+    font-weight: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    padding-left: 20px;
+    width: auto;
+}
+
+#SidebarAccTitle{
+    font-size: 23px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    width: 100%;
+    margin: 0px;
+    text-align: left;
+}
+
+#SidebarAccDesc{
+    font-size: 13px;
+    font-weight: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    width: 100%;
+    margin: 0px;
+    text-align: left;
+}
 zam-sidebar > :first-child {
     margin-top: var(--Sidebar-Pad);
 }
@@ -160,6 +226,21 @@ zam-icon {
 
     cursor: pointer;
     user-select: none;
+}
+
+#sidebar-iconBig{
+    margin-top: 10px;
+    margin-left: calc(var(--Sidebar-LPad-Open) / 4);
+    background-repeat: no-repeat;
+
+    width: auto;
+    height: 35px;
+    display: none;
+
+    cursor: pointer;
+    user-select: none;
+
+    transition: ;
 }
 
 #zam-map {
