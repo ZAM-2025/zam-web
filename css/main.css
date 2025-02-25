@@ -25,17 +25,21 @@
 /*Fonts*/
 @font-face {
     font-family: SFPro;
-    src: url(fonts/SFPRODISPLAYREGULAR.OTF);
+    src: url(../fonts/SFPRODISPLAYREGULAR.OTF);
 }
 @font-face {
     font-family: SFPro;
-    src: url(fonts/SFPRODISPLAYBOLD.OTF);
+    src: url(../fonts/SFPRODISPLAYBOLD.OTF);
     font-weight: bolder;
 }
 @font-face {
     font-family: SFPro;
-    src: url(fonts/SFPRODISPLAYMEDIUM.OTF);
+    src: url(../fonts/SFPRODISPLAYMEDIUM.OTF);
     font-weight: medium;
+}
+
+* {
+    font-family: SFPro;
 }
 
 /*Icone di google*/
@@ -183,6 +187,14 @@ zam-sidebar {
     text-align: left;
 }
 
+#SidebarAccIcon {
+    margin-bottom: var(--Sidebar-Pad);
+}
+
+zam-sidebar[open] #SidebarAccIcon {
+    margin-bottom: 0px !important;
+}
+
 #SidebarAccDesc{
     font-size: 13px;
     font-weight: normal;
@@ -239,8 +251,6 @@ zam-icon {
 
     cursor: pointer;
     user-select: none;
-
-    transition: ;
 }
 
 #zam-map {
