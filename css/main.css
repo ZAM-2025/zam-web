@@ -398,6 +398,8 @@ zam-icon {
 
     border-radius: var(--Login-Button-CR);
     cursor: pointer;
+
+    transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 
 .LoginButton:disabled {
