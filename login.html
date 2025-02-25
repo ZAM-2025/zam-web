@@ -1,12 +1,33 @@
 <html>
     <head>
         <title>ZAM | Accedi</title>
-        <link rel="stylesheet" href="zam.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/main.css">
         <link rel="icon" type="image/x-icon" href="favicon.ico">
     </head>
-    <body style="background-color: #2a2a2a;">
+    <body class="LoginBody">
         <div class="Accedi">
-            <h1 class="Accedi">ZAM</h1><h2 class="Accedi">Pre-Alpha v0.1</h2>
+            <div class="AccediContainer">
+                <img class="ZAMLogo" src = "svg/ZAM.svg">
+                <h1>Accedi</h1>
+                <p class="AccediText">Usa il tuo account Dipendente, Coordinatore o Gestore per accedere</p>
+            </div>
+            <form class="AccediContainer AccediTop">
+                <input placeholder="Nome Utente" name="username" class="LoginField" type="text">
+                <input placeholder="Password" name="password" class="LoginField" type="password">
+                <div row>
+                    <input type="checkbox" name="remember" checked>
+                    <label light for="remember">Ricorda</label>
+                    <zam-spacer></zam-spacer>
+                    <a href="forgot.html" light>Password dimenticata?</a>
+                </div>
+                <zam-spacer></zam-spacer>
+                <div class="ButtonSpacer" row>
+                    <zam-spacer></zam-spacer>
+                    <input disabled class="LoginButton" type="submit" value="Accedi">    
+                </div>
+            </form>
+            <zam-spacer></zam-spacer>
         </div>  
     </body>   
 </html>

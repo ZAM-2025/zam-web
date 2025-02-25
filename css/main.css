@@ -14,11 +14,40 @@
 
     --Sidebar-Width-Open: 300px;
     --Sidebar-LPad-Open: 15px;
+
+    --Generic-Shadow: 0px 15px 25px var(--Nero);
+
+    --Login-BG: #1C1C1C;
+    --Accedi-Width: 75vw;
+    --Accedi-Height: 60vh;
+    --Accedi-CR: 15px;
+    --Accedi-Margin: 40px;
+    --Accedi-Dir: row;
+    --Accedi-Top: 10vmin;
+    --Accedi-Container-Height: 100%;
+    --Login-Field-Height: 60px;
+    --Login-Field-CR: 12px;
+    --Login-Field-Pad: 20px;
+    --Login-Button-CR: 20px;
 }
 
-@media only screen and (max-width: 600px) {
+*[mobile] {
+    display: none;
+}
+
+@media only screen and (max-width: 700px) {
     :root {
         --Sidebar-Width-Open: 100vw;
+        --Accedi-Dir: column;
+        --Accedi-Width: 90vw;   
+        --Accedi-Height: 90vh;   
+        --Accedi-Margin: 20px;
+        --Accedi-Top: 0px;
+        --Accedi-Container-Height: auto;
+    }
+
+    *[mobile] {
+        display: block;
     }
 }
 
@@ -26,6 +55,7 @@
 @font-face {
     font-family: SFPro;
     src: url(../fonts/SFPRODISPLAYREGULAR.OTF);
+    font-weight: normal;
 }
 @font-face {
     font-family: SFPro;
@@ -37,9 +67,15 @@
     src: url(../fonts/SFPRODISPLAYMEDIUM.OTF);
     font-weight: medium;
 }
+@font-face {
+    font-family: SFPro;
+    src: url(../fonts/SFPRODISPLAYLIGHTITALIC.OTF);
+    font-weight: 10;
+}
 
 * {
     font-family: SFPro;
+    font-weight: normal;
 }
 
 /*Icone di google*/
@@ -55,6 +91,10 @@
 body{
     margin: 0%;
     background-color: var(--GrigioChiaro);
+}
+
+a {
+    color: var(--Bianco);
 }
 
 #Z {
@@ -255,4 +295,123 @@ zam-icon {
 
 #zam-map {
     z-index: -1 !important;
+}
+
+.ZAMLogo {
+    margin-top: 10px;
+    margin-left: calc(var(--Sidebar-LPad-Open) / 4);
+    background-repeat: no-repeat;
+
+    width: fit-content;
+    height: 40px;
+
+    cursor: pointer;
+    user-select: none;
+}
+
+.LoginBody {
+    background-color: var(--Login-BG);
+    display: flex;
+
+    margin: 0;
+    padding: 0;
+
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+    width: 100vw;
+}
+
+.Accedi {
+    display: flex;
+    flex-direction: var(--Accedi-Dir);
+
+    width: var(--Accedi-Width);
+    height: var(--Accedi-Height);
+
+    background-color: var(--GrigioScuro);
+    border-radius: var(--Accedi-CR);
+
+    color: var(--Bianco);
+    box-shadow: var(--Generic-Shadow);   
+}
+
+.AccediContainer {
+    display: flex;
+    flex-direction: column;
+
+    width: var(--Accedi-Container-Height);
+
+    color: var(--Bianco);
+
+    margin-left: var(--Accedi-Margin);
+    margin-right: var(--Accedi-Margin);
+
+    margin-top: calc(var(--Accedi-Margin) / 2);
+    margin-bottom: calc(var(--Accedi-Margin) / 2);
+
+    line-height: 5px;
+}
+
+.AccediTop {
+    margin-top: var(--Accedi-Top);
+}
+
+.AccediText {
+    font-weight: normal;
+    line-height: normal;
+    margin: 0;
+    width: 75%;
+}
+
+*[light] {
+    font-family: SFPro;
+    font-weight: 10;
+}
+
+.LoginField {
+    background-color: #ffffff30;
+    border: 1px solid #ffffff60;
+    padding-left: var(--Login-Field-Pad);
+    padding-right: var(--Login-Field-Pad);
+
+    font-family: SFPro;
+    color: var(--Bianco);
+    font-size: large;
+    
+    height: var(--Login-Field-Height);
+    border-radius: var(--Login-Field-CR);
+    margin-bottom: 15px;
+}
+
+.LoginButton {
+    width: 150px;
+
+    background-color: var(--Bianco);
+    
+    color: var(--Nero);
+    font-size: large;
+
+    border: none;
+    padding: 5px;
+
+    border-radius: var(--Login-Button-CR);
+    cursor: pointer;
+}
+
+.LoginButton:disabled {
+    color: var(--GrigioScuro);
+    background-color: var(--GrigioChiaro);
+    cursor: not-allowed;
+}
+
+.ButtonSpacer {
+    padding-top: 4vmin;
+}
+
+div[row] {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
