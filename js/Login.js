@@ -21,6 +21,10 @@ function DisableButton(element) {
     element.setAttribute("disabled", "");
 }
 
+function RedirHome() {
+    window.location.href = "./index.html";
+}
+
 function SendLogin(data) {
     data.preventDefault();
 
@@ -30,7 +34,7 @@ function SendLogin(data) {
     var auth = new ZAMAuth("http://localhost:8080");
     auth.auth(username, password, true, (response) => {
         if(response.success) {
-            alert("ZAM: Accesso completato!");
+            RedirHome();
         } else {
             alert("ZAM: Accesso fallito :(\n" + response.message);
         }

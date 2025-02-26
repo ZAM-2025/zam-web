@@ -9,7 +9,7 @@
     --Verde: #02AF16;
 
     --Sidebar-Pad: 10px;
-    --Sidebar-Gap: 25px;
+    --Sidebar-Gap: 15px;
     --Sidebar-Width-Closed: 63px;
 
     --Sidebar-Width-Open: 300px;
@@ -105,7 +105,7 @@ a {
     align-content: center;
 }
 
-#EsciAccount{
+#EsciAccount {
     display: none;
     width: 100%;
     text-align: center;
@@ -114,6 +114,7 @@ a {
     border: 0;
     font-weight: bold;
     font-size: 8px;
+    cursor: pointer;
 }
 
 #PulsanteIcona {

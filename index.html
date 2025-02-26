@@ -19,6 +19,7 @@
         crossorigin=""></script>
 
         <!-- Javascripts -->
+        <script type="text/javascript" src="lib/zam-auth/zam-auth.js"></script>
         <script type="text/javascript" src="js/Sidebar.js"></script>
         <script type="text/javascript" src="js/ZamIcon.js"></script>
         <script type="text/javascript" src="lib/zam-map/zam-map.js"></script>
@@ -33,22 +34,24 @@
 
             <zam-spacer></zam-spacer>
  
-            <button id="PulsanteIcona" style="position: absolute; margin-bottom: 60px;">
+            <button id="PulsanteIcona">
                 <img src = "svg/Confirmation_number.svg" style="width:29px;height:auto;"/>
                 <h1 id="SidebarText">Prenotazioni</h1>
             </button>
-            <button id="PulsanteIcona" style="position: absolute; margin-top: 60px;">
+            <button id="PulsanteIcona">
                 <img src = "svg/Settings.svg" style="width:29px;height:auto;"/>
                 <h1 id="SidebarText">Impostazioni</h1>
             </button>
 
-            <button id="PulsanteIcona" style="height: 70px; align-items: end;">
+            <zam-spacer></zam-spacer>
+
+            <button id="PulsanteIcona" style="height: 70px; align-items: center;">
                 <img id="SidebarAccIcon" src = "svg/Account.svg" style="width:auto;height:29px;"/>
                 <div id="Sidebar-Account">
-                    <h1 id="SidebarAccTitle">Minna Abdelkhalek</h1>
+                    <h1 id="SidebarAccTitle">Caricamento...</h1>
                     <h1 id="SidebarAccDesc">Gestione Account</h1>
                 </div>
-                <button id="EsciAccount">
+                <button onclick="LogOut()" id="EsciAccount">
                     <h1>Esci</h1>
                 </button>
             </button>

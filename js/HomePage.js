@@ -153,6 +153,40 @@ function ToggleSidebar(event, /**@type {HTMLElement} */ sidebar) {
     }
 }
 
+function RedirLogin() {
+    window.location.href = "./login.html";
+}
+
+async function FillUserInfo() {
+    var auth = new ZAMAuth("http://localhost:8080");
+
+    let status = await auth.getUserInfo((data) => {
+        if(data.success) {
+            var nameTitle = document.getElementById("SidebarAccTitle");
+            nameTitle.innerText = data.nome + " " + data.cognome;
+        } else {
+            RedirLogin();
+        }
+    });
+
+    if(status === false) {
+        RedirLogin();
+    }
+}
+
+async function LogOut() {
+    var auth = new ZAMAuth("http://localhost:8080");
+    
+    await auth.logout((data) => {
+        if(data.success) {
+            window.location.reload();
+        } else {
+            console.log("Failed to log out");
+        }
+    });
+}
+
 window.onload = () => {
     HomePage();
+    FillUserInfo();
 }
