@@ -4,3 +4,6 @@
 [submodule "lib/zam-auth"]
 	path = lib/zam-auth
 	url = https://github.com/ZAM-2025/zam-auth
+[submodule "lib/zamcaptcha-js"]
+	path = lib/zamcaptcha-js
+	url = https://github.com/ZAM-2025/zamcaptcha-js
