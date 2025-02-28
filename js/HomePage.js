@@ -118,7 +118,7 @@ function EsciSize(value){
 }
 
 function HomePage() {
-    var map = new ZAMMap(ZAMMapType.Floor, "lib/zam-map/");
+    var map = new ZAMMap(ZAMMapType.Ground, "lib/zam-map/");
 
     var sidebarIcon = document.getElementById("sidebar-icon");
     var sidebarIconBig = document.getElementById("sidebar-iconBig")

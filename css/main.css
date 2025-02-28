@@ -2,6 +2,7 @@
 :root {
     --Nero: #161616;
     --GrigioScuro: #161616;
+    --GrigioMedio: #1C1C1C;
     --GrigioChiaro: #2C2C2C;
     --Bianco: #E8EAED;
 
@@ -9,7 +10,7 @@
     --Verde: #02AF16;
 
     --Sidebar-Pad: 10px;
-    --Sidebar-Gap: 15px;
+    --Sidebar-Gap: 10px;
     --Sidebar-Width-Closed: 63px;
 
     --Sidebar-Width-Open: 300px;
@@ -29,6 +30,10 @@
     --Login-Field-CR: 12px;
     --Login-Field-Pad: 20px;
     --Login-Button-CR: 20px;
+}
+
+* {
+    user-select: none;
 }
 
 *[mobile] {
@@ -229,7 +234,6 @@ zam-sidebar {
 }
 
 #SidebarAccIcon {
-    margin-bottom: var(--Sidebar-Pad);
 }
 
 zam-sidebar[open] #SidebarAccIcon {
