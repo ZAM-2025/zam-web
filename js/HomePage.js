@@ -164,6 +164,14 @@ async function FillUserInfo() {
         if(data.success) {
             var nameTitle = document.getElementById("SidebarAccTitle");
             nameTitle.innerText = data.nome + " " + data.cognome;
+
+            var coordConditionals = ZAMConditionals.findConditions("coord");
+        
+            if(data.type == ZAMUserType.COORDINATORE) {
+                coordConditionals.forEach((e) => {
+                    e.removeAttribute("zam-conditional");
+                });
+            }
         } else {
             RedirLogin();
         }
