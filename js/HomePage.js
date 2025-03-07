@@ -158,7 +158,7 @@ function RedirLogin() {
 }
 
 async function FillUserInfo() {
-    var auth = new ZAMAuth("http://localhost:8080");
+    var auth = new ZAMAuth();;
 
     let status = await auth.getUserInfo((data) => {
         if(data.success) {
@@ -183,7 +183,7 @@ async function FillUserInfo() {
 }
 
 async function LogOut() {
-    var auth = new ZAMAuth("http://localhost:8080");
+    var auth = new ZAMAuth();;
     
     await auth.logout((data) => {
         if(data.success) {

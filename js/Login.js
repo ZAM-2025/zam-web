@@ -31,7 +31,7 @@ function SendLogin(data) {
     let username = data.target.username.value;
     let password = data.target.password.value;
 
-    var auth = new ZAMAuth("http://localhost:8080");
+    var auth = new ZAMAuth();;
     auth.auth(username, password, true, (response) => {
         if(response.success) {
             RedirHome();
