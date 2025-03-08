@@ -428,25 +428,19 @@ div[row] {
 }
 
 .indicatore {
-    margin: 10px;
-
-    width: 10px;
-    height: 10px;
-
     border-radius: 100%;
 
-    background-color: var(--GrigioChiaro);
-    box-shadow: 0px 0px 15px 5px var(--GrigioChiaro);
+    color: var(--GrigioChiaro);
 
     transition: background-color 0.25s ease-in-out;
+    font-style: italic;
+    font-weight: 10;
 }
 
 .indicatore[occupato] {
-    background-color: var(--Rosso);
-    box-shadow: 0px 0px 15px 5px var(--Rosso);
+    color: var(--Rosso);
 }
 
 .indicatore[libero] {
-    background-color: var(--Verde);
-    box-shadow: 0px 0px 15px 5px var(--Verde);
+    color: var(--Verde);
 }
