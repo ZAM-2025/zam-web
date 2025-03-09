@@ -56,7 +56,7 @@ class BookingSidebar extends HTMLElement {
             auth.book(assetID, startDateTime, endDateTime, (result) => {
                 console.log(result);
 
-                if(result == true) {
+                if(result.success) {
                     container.close();
                 }
             });
