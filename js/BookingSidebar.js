@@ -3,7 +3,7 @@ class BookingSidebar extends HTMLElement {
         super();
     }
 
-    add(assetName, start, end, status) {
+    add(assetName, start, end, status, assetID) {
         var sideContainer = document.createElement("div");
         sideContainer.className = "booking-row";
 
@@ -34,6 +34,59 @@ class BookingSidebar extends HTMLElement {
 
         this.appendChild(sideContainer);
         this.appendChild(statusText);
+
+        var bookForm = document.createElement("form");
+
+        var container = this;
+        bookForm.onsubmit = (event) => {
+            event.preventDefault();
+            
+            var formData = Object.fromEntries(new FormData(event.target));
+            console.log(formData);
+
+            var startDateTime = new Date(Date.parse(formData.date));
+            let [startHour, startMinute] = formData.start.split(":");
+            startDateTime.setHours(startHour, startMinute);
+
+            var endDateTime = new Date(Date.parse(formData.date));
+            let [endHour, endMinute] = formData.end.split(":");
+            endDateTime.setHours(endHour, endMinute);
+
+            var auth = new ZAMAuth();
+            auth.book(assetID, startDateTime, endDateTime, (result) => {
+                console.log(result);
+
+                if(result == true) {
+                    container.close();
+                }
+            });
+        };
+
+        var inputDate = document.createElement("input");
+        inputDate.type = "date";
+        inputDate.required = true;
+        inputDate.name = "date";
+
+        var startHour = document.createElement("input");
+        startHour.type = "time";
+        startHour.required = true;
+        startHour.name = "start";
+
+        var endHour = document.createElement("input");
+        endHour.type = "time";
+        endHour.required = true;
+        endHour.name = "end";
+
+        var submitButton = document.createElement("input");
+        submitButton.type = "submit";
+        submitButton.value = "Prenota";
+
+        bookForm.appendChild(inputDate);
+        bookForm.appendChild(startHour);
+        bookForm.appendChild(endHour);
+        bookForm.appendChild(submitButton);
+
+        this.appendChild(bookForm);
 
         document.body.appendChild(this);
     }
