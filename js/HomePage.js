@@ -165,16 +165,25 @@ async function FillUserInfo() {
             var nameTitle = document.getElementById("SidebarAccTitle");
             nameTitle.innerText = data.nome + " " + data.cognome;
 
+            // Gestione delle parti "condizionali" della pagina
+            // Alcune opzioni sono disponibili solo per certi tipi di utente.
             var coordConditionals = ZAMConditionals.findConditions("coord");
             var gestConditionals = ZAMConditionals.findConditions("gest");
+            var coordGestConditionals = ZAMConditionals.findConditions("coord|gest");
             var notGestConditionals = ZAMConditionals.findConditions("!gest");
         
+            // Solo per coordinatori
             if(data.type == ZAMUserType.COORDINATORE) {
                 coordConditionals.forEach((e) => {
                     e.removeAttribute("zam-conditional");
                 });
+
+                coordGestConditionals.forEach((e) => {
+                    e.removeAttribute("zam-conditional");
+                });
             }
             
+            // Solo per gestori
             if(data.type == ZAMUserType.GESTORE) {
                 gestConditionals.forEach((e) => {
                     e.removeAttribute("zam-conditional");
@@ -183,7 +192,12 @@ async function FillUserInfo() {
                 notGestConditionals.forEach((e) => {
                     e.remove();
                 });
+
+                coordGestConditionals.forEach((e) => {
+                    e.removeAttribute("zam-conditional");
+                });
             } else {
+                // Per tutti tranne i coordinatori
                 notGestConditionals.forEach((e) => {
                     e.removeAttribute("zam-conditional");
                 });

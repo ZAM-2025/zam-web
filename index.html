@@ -42,12 +42,16 @@
                 <h1 id="SidebarText">Prenotazioni</h1>
             </button>
             <!--<Coordinatori>-->
-            <button onclick="Helpers.redir('./wip.html')" zam-conditional="coord" id="PulsanteIcona">
+            <button onclick="Helpers.redir('./wip.html')" zam-conditional="gest" id="PulsanteIcona">
+                <img src="svg/Manage_Accounts.svg" style="width:29px;height:auto;"/>
+                <h1 id="SidebarText">Gestione Utenti</h1>
+            </button>
+            <button onclick="Helpers.redir('./wip.html')" zam-conditional="coord|gest" id="PulsanteIcona">
                 <img src="svg/Groups.svg" style="width:29px;height:auto;"/>
-                <h1 id="SidebarText">Gestione prenotazioni</h1>
+                <h1 id="SidebarText">Gestione Prenotazioni</h1>
             </button>
             <button onclick="Helpers.redir('./wip.html')" zam-conditional="gest" id="PulsanteIcona">
-                <img src="svg/Settings.svg" style="width:29px;height:auto;"/>
+                <img src="svg/Edit.svg" style="width:29px;height:auto;"/>
                 <h1 id="SidebarText">Gestione Assets</h1>
             </button>
             <button onclick="Helpers.redir('./wip.html')" id="PulsanteIcona">

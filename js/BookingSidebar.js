@@ -7,11 +7,19 @@ class BookingSidebar extends HTMLElement {
         var sideContainer = document.createElement("div");
         sideContainer.className = "booking-row";
 
+        var spacer = document.createElement("zam-spacer");
+
         var titleText = document.createElement("h1");
         titleText.innerText = assetName;
 
+        var closeButton = document.createElement("button");
+        closeButton.className = "close-button";
+        closeButton.onclick = () => {
+            this.close();
+        }
+
         var statusText = document.createElement("p");
-        statusText.innerText = "Stato attuale: ";
+        statusText.innerText = "Stato Attuale: ";
 
         // TODO: gestire altri stati?
         if(status) {
@@ -21,6 +29,8 @@ class BookingSidebar extends HTMLElement {
         }
 
         sideContainer.appendChild(titleText);
+        sideContainer.appendChild(spacer);
+        sideContainer.appendChild(closeButton);
 
         this.appendChild(sideContainer);
         this.appendChild(statusText);

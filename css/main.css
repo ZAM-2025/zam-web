@@ -36,6 +36,11 @@
     --Booking-Pad: 10px;
     --Booking-CR: 15px;
     --Booking-Right: 10px;
+    --Booking-MaxWidth: 475px;
+
+    --Booking-Row-Pad: 20px;
+
+    --Close-Size: 40px;
 }
 
 * {
@@ -479,6 +484,7 @@ div[row] {
 
 zam-booking-sidebar {
     width: var(--Booking-Width);
+    max-width: var(--Booking-MaxWidth);
     height: var(--Booking-Height);
 
     position: fixed;
@@ -514,6 +520,10 @@ zam-booking-sidebar[closing] {
 .booking-row {
     display: flex;
     flex-direction: row;
+    
+    align-items: center;
+    line-height: 0;
+    margin-top: var(--Booking-Row-Pad);
 }
 
 @keyframes booking-sidebar-close {
@@ -523,4 +533,42 @@ zam-booking-sidebar[closing] {
     100% {
         right: calc(var(--Booking-Right) - var(--Booking-Width));
     }
+}
+
+.close-button {
+    width: var(--Close-Size);
+    height: var(--Close-Size);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+    color: var(--GrigioScuro);
+
+    border: none;
+    border-radius: var(--Close-Size);
+
+    cursor: pointer;
+
+    background-image: url("../svg/close.svg");
+    background-repeat: no-repeat;
+    background-size: 45%;
+    background-position-x: 50%;
+    background-position-y: 50%;
+
+    transition: background-color 0.25s ease-in-out;
+}
+
+.close-button:hover {
+    background-color: lightgray;
+}
+
+span[green] {
+    color: var(--Verde)
+}
+
+span[red] {
+    color: var(--Rosso)
 }
