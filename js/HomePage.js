@@ -166,9 +166,25 @@ async function FillUserInfo() {
             nameTitle.innerText = data.nome + " " + data.cognome;
 
             var coordConditionals = ZAMConditionals.findConditions("coord");
+            var gestConditionals = ZAMConditionals.findConditions("gest");
+            var notGestConditionals = ZAMConditionals.findConditions("!gest");
         
             if(data.type == ZAMUserType.COORDINATORE) {
                 coordConditionals.forEach((e) => {
+                    e.removeAttribute("zam-conditional");
+                });
+            }
+            
+            if(data.type == ZAMUserType.GESTORE) {
+                gestConditionals.forEach((e) => {
+                    e.removeAttribute("zam-conditional");
+                });
+
+                notGestConditionals.forEach((e) => {
+                    e.remove();
+                });
+            } else {
+                notGestConditionals.forEach((e) => {
                     e.removeAttribute("zam-conditional");
                 });
             }

@@ -21,9 +21,11 @@
         <!-- Javascripts -->
         <script type="text/javascript" src="lib/zam-auth/zam-auth.js"></script>
         <script type="text/javascript" src="js/Sidebar.js"></script>
+        <script type="text/javascript" src="js/BookingSidebar.js"></script>
         <script type="text/javascript" src="js/ZamIcon.js"></script>
         <script type="text/javascript" src="lib/zam-map/zam-map.js"></script>
         <script type="text/javascript" src="js/ZAMConditional.js"></script>
+        <script type="text/javascript" src="js/Helpers.js"></script>
         <script type="text/javascript" src="js/HomePage.js"></script>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,16 +37,26 @@
 
             <zam-spacer></zam-spacer>
  
-            <button id="PulsanteIcona">
-                <img src = "svg/Confirmation_number.svg" style="width:29px;height:auto;"/>
+            <button onclick="Helpers.redir('./wip.html')" zam-conditional="!gest" id="PulsanteIcona">
+                <img src="svg/Confirmation_number.svg" style="width:29px;height:auto;"/>
                 <h1 id="SidebarText">Prenotazioni</h1>
             </button>
-            <button zam-conditional="coord" id="PulsanteIcona">
-                <img src = "svg/Settings.svg" style="width:29px;height:auto;"/>
-                <h1 id="SidebarText">Super segreto</h1>
+            <!--<Coordinatori>-->
+            <button onclick="Helpers.redir('./wip.html')" zam-conditional="coord" id="PulsanteIcona">
+                <img src="svg/Groups.svg" style="width:29px;height:auto;"/>
+                <h1 id="SidebarText">Gestione prenotazioni</h1>
             </button>
-            <button id="PulsanteIcona">
-                <img src = "svg/Settings.svg" style="width:29px;height:auto;"/>
+            <button onclick="Helpers.redir('./wip.html')" zam-conditional="gest" id="PulsanteIcona">
+                <img src="svg/Settings.svg" style="width:29px;height:auto;"/>
+                <h1 id="SidebarText">Gestione Assets</h1>
+            </button>
+            <button onclick="Helpers.redir('./wip.html')" id="PulsanteIcona">
+                <img src="svg/Accessibility.svg" style="width:29px;height:auto;"/>
+                <h1 id="SidebarText">Accessibilit&agrave;</h1>
+            </button>
+            <!--</Coordinatori>-->
+            <button onclick="Helpers.redir('./wip.html')" id="PulsanteIcona">
+                <img src="svg/Settings.svg" style="width:29px;height:auto;"/>
                 <h1 id="SidebarText">Impostazioni</h1>
             </button>
 

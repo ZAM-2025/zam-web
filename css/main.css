@@ -30,6 +30,12 @@
     --Login-Field-CR: 12px;
     --Login-Field-Pad: 20px;
     --Login-Button-CR: 20px;
+    
+    --Booking-Width: 50vw;
+    --Booking-Height: 90vh;
+    --Booking-Pad: 10px;
+    --Booking-CR: 15px;
+    --Booking-Right: 10px;
 }
 
 * {
@@ -443,4 +449,78 @@ div[row] {
 
 .indicatore[libero] {
     color: var(--Verde);
+}
+
+.WIPBody {
+    background-color: var(--Login-BG);
+    display: flex;
+    flex-direction: column;
+    color: white;
+
+    margin: 0;
+    padding: 0;
+
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+    width: 100vw;
+
+    line-height: 100%;
+
+    text-align: center;
+}
+
+.WIPBody h1 {
+    line-height: 0;
+
+    margin-top: 75px;
+}
+
+zam-booking-sidebar {
+    width: var(--Booking-Width);
+    height: var(--Booking-Height);
+
+    position: fixed;
+    top: calc(50% - var(--Booking-Height) / 2);
+    right: var(--Booking-Right);
+
+    background-color: var(--GrigioScuro);
+    color: white;
+    padding: var(--Booking-Pad);
+    border: 1px var(--GrigioChiaro) solid;
+    border-radius: var(--Booking-CR);
+
+    display: flex;
+    flex-direction: column;
+
+    z-index: 3 !important;
+    animation: booking-sidebar-open 0.25s ease-in-out;
+}
+
+zam-booking-sidebar[closing] {
+    animation: booking-sidebar-close 0.25s ease-in-out;
+}
+
+@keyframes booking-sidebar-open {
+    0% {
+        right: calc(var(--Booking-Right) - var(--Booking-Width));
+    }
+    100% {
+        right: var(--Booking-Right);   
+    }
+}
+
+.booking-row {
+    display: flex;
+    flex-direction: row;
+}
+
+@keyframes booking-sidebar-close {
+    0% {
+        right: var(--Booking-Right);   
+    }
+    100% {
+        right: calc(var(--Booking-Right) - var(--Booking-Width));
+    }
 }

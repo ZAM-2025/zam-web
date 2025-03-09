@@ -5,5 +5,8 @@ let Helpers = {
         }
 
         return false;
+    },
+    redir: function(url) {
+        location.href = url;
     }
 }
