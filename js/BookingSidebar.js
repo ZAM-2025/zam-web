@@ -73,6 +73,8 @@ class BookingSidebar extends HTMLElement {
 
                 if(result.success) {
                     container.close();
+                } else {
+                    alert(`${assetName} &grave; gi&agrave; prenotato nella fascia oraria ${start} - ${end}.`);
                 }
             });
         };
