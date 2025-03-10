@@ -4,6 +4,7 @@
     --GrigioScuro: #161616;
     --GrigioMedio: #1C1C1C;
     --GrigioChiaro: #2C2C2C;
+    --GrigioChiarissimo: rgb(188, 188, 188);
     --Bianco: #E8EAED;
 
     --Rosso: #AF0202;
@@ -41,6 +42,17 @@
     --Booking-Row-Pad: 20px;
 
     --Close-Size: 40px;
+
+    --DateTime-PadH: 10px;
+    --DateTime-PadV: 5px;
+    --DateTime-MTop: 5px;
+    --DateTime-MBot: 20px;
+    --DateTime-CR: 10px;
+
+    --BookButton-PadH: 40px;
+    --BookButton-PadV: 7px;
+
+    --BookTopBottom: 18px;
 }
 
 * {
@@ -488,7 +500,7 @@ zam-booking-sidebar {
     height: var(--Booking-Height);
 
     position: fixed;
-    top: calc(50% - var(--Booking-Height) / 2);
+    top: calc(50% - var(--Booking-Height) / 2 - var(--Booking-Pad));
     right: var(--Booking-Right);
 
     background-color: var(--GrigioScuro);
@@ -523,7 +535,6 @@ zam-booking-sidebar[closing] {
     
     align-items: center;
     line-height: 0;
-    margin-top: var(--Booking-Row-Pad);
 }
 
 @keyframes booking-sidebar-close {
@@ -571,4 +582,79 @@ span[green] {
 
 span[red] {
     color: var(--Rosso)
+}
+
+*[nopad] {
+    padding: 0;
+    margin: 0;
+}
+
+*[italic] {
+    font-style: italic;
+    font-weight: lighter;
+}
+
+input[type="date"], input[type="time"] {
+    background-color: var(--GrigioChiaro);
+    color: var(--GrigioChiarissimo);
+    color-scheme: dark;
+
+    border: 1px var(--GrigioChiarissimo) solid;
+    border-radius: var(--DateTime-CR);
+
+    padding-top: var(--DateTime-PadV);
+    padding-bottom: var(--DateTime-PadV);
+    padding-left: var(--DateTime-PadH);
+    padding-right: var(--DateTime-PadH);
+
+    width: 100px;
+
+    margin-top: var(--DateTime-MTop);
+    margin-bottom: var(--DateTime-MBot);
+
+    font-family: SFPro;
+}
+
+.book-button {
+    background-color: white;
+    color: black;
+
+    padding-left: var(--BookButton-PadH);
+    padding-right: var(--BookButton-PadH);
+    padding-top: var(--BookButton-PadV);
+    padding-bottom: var(--BookButton-PadV);
+
+    font-size: 17px;
+
+    border-radius: 100px;
+    border: none;
+
+    cursor: pointer;
+
+    transition: 0.25s background-color ease-in-out;
+}
+
+.book-button:hover {
+    background-color: var(--GrigioChiarissimo);
+}
+
+.button-row {
+    display: flex;
+    flex-direction: row;
+    
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+
+    margin-bottom: var(--BookTopBottom);
+}
+
+.book-form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.booking-row[top] {
+    margin-top: var(--BookTopBottom);
 }

@@ -6,11 +6,12 @@ class BookingSidebar extends HTMLElement {
     add(assetName, start, end, status, assetID) {
         var sideContainer = document.createElement("div");
         sideContainer.className = "booking-row";
-
-        var spacer = document.createElement("zam-spacer");
+        sideContainer.setAttribute("top", "");
 
         var titleText = document.createElement("h1");
         titleText.innerText = assetName;
+
+        var spacer = document.createElement("zam-spacer");
 
         var closeButton = document.createElement("button");
         closeButton.className = "close-button";
@@ -18,24 +19,36 @@ class BookingSidebar extends HTMLElement {
             this.close();
         }
 
-        var statusText = document.createElement("p");
-        statusText.innerText = "Stato Attuale: ";
-
-        // TODO: gestire altri stati?
-        if(status) {
-            statusText.innerHTML += "<span green>Libero</span>"
-        } else {
-            statusText.innerHTML += "<span red>Occupato</span>"
-        }
+        var statusContainer = document.createElement("div");
+        statusContainer.className = "booking-row";
+        statusContainer.setAttribute("nopad", "");
 
         sideContainer.appendChild(titleText);
         sideContainer.appendChild(spacer);
         sideContainer.appendChild(closeButton);
 
+        var statusText = document.createElement("h3");
+        statusText.innerText = "Stato Attuale: ";
+        statusContainer.appendChild(statusText);
+
+        // TODO: gestire altri stati?
+        if(status) {
+            statusText.innerHTML += "<span green>Libero</span>&nbsp;"
+        } else {
+            statusText.innerHTML += "<span red>Occupato</span>&nbsp;"
+        }
+
+        if(start != null && end != null) {
+            var timeText = document.createElement("p");
+            timeText.innerText = `(${start} - ${end})`;
+            statusContainer.appendChild(timeText);
+        }
+
         this.appendChild(sideContainer);
-        this.appendChild(statusText);
+        this.appendChild(statusContainer);
 
         var bookForm = document.createElement("form");
+        bookForm.className = "book-form";
 
         var container = this;
         bookForm.onsubmit = (event) => {
@@ -52,6 +65,8 @@ class BookingSidebar extends HTMLElement {
             let [endHour, endMinute] = formData.end.split(":");
             endDateTime.setHours(endHour, endMinute);
 
+            console.log(startDateTime, endDateTime);
+
             var auth = new ZAMAuth();
             auth.book(assetID, startDateTime, endDateTime, (result) => {
                 console.log(result);
@@ -61,6 +76,24 @@ class BookingSidebar extends HTMLElement {
                 }
             });
         };
+
+        var prenotaLabel = document.createElement("h1");
+        prenotaLabel.innerText = "Prenota";
+
+        var dataLabel = document.createElement("div");
+        dataLabel.innerHTML = "<h2 nopad>Data</h2>";
+        dataLabel.innerHTML += "<p italic nopad>Seleziona la data di prenotazione</p>";
+        dataLabel.setAttribute("nopad", "");
+
+        var oraLabel = document.createElement("div");
+        oraLabel.innerHTML = "<h2 nopad>Orario</h2>";
+        oraLabel.innerHTML += "<p italic nopad>Seleziona l&apos;orario di inizio</p>";
+        oraLabel.setAttribute("nopad", "");
+
+        var endOraLabel = document.createElement("p");
+        endOraLabel.innerHTML = "Seleziona l&apos;orario di fine";
+        endOraLabel.setAttribute("nopad", "");
+        endOraLabel.setAttribute("italic", "");
 
         var inputDate = document.createElement("input");
         inputDate.type = "date";
@@ -77,14 +110,27 @@ class BookingSidebar extends HTMLElement {
         endHour.required = true;
         endHour.name = "end";
 
+        var buttonSpacer = document.createElement("zam-spacer");
+        
+        var buttonContainer = document.createElement("div");
+        buttonContainer.className = "button-row";
+
         var submitButton = document.createElement("input");
         submitButton.type = "submit";
         submitButton.value = "Prenota";
+        submitButton.className = "book-button";
 
+        buttonContainer.appendChild(submitButton);
+
+        bookForm.appendChild(prenotaLabel);
+        bookForm.appendChild(dataLabel);
         bookForm.appendChild(inputDate);
+        bookForm.appendChild(oraLabel);
         bookForm.appendChild(startHour);
+        bookForm.appendChild(endOraLabel);
         bookForm.appendChild(endHour);
-        bookForm.appendChild(submitButton);
+        bookForm.appendChild(buttonSpacer);
+        bookForm.appendChild(buttonContainer);
 
         this.appendChild(bookForm);
 
