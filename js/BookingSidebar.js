@@ -67,6 +67,9 @@ class BookingSidebar extends HTMLElement {
 
             console.log(startDateTime, endDateTime);
 
+            var bookStart = `${startHour}:${startMinute}`;
+            var bookEnd = `${endHour}:${endMinute}`;
+
             var auth = new ZAMAuth();
             auth.book(assetID, startDateTime, endDateTime, (result) => {
                 console.log(result);
@@ -74,13 +77,26 @@ class BookingSidebar extends HTMLElement {
                 if(result.success) {
                     container.close();
                 } else {
-                    alert(`${assetName} &grave; gi&agrave; prenotato nella fascia oraria ${start} - ${end}.`);
+                    alert(`Impossibile prenotare.\n${assetName} prenotato nella fascia oraria selezionata.`);
                 }
             });
         };
 
+        var prenotaLabelContainer = document.createElement("div");
+        prenotaLabelContainer.className = "prenota-label-container";
+
+        var spacerLeft = document.createElement("div");
+        spacerLeft.className = "prenota-label-spacer";
+
+        var spacerRight = document.createElement("div");
+        spacerRight.className = "prenota-label-spacer";
+
         var prenotaLabel = document.createElement("h1");
         prenotaLabel.innerText = "Prenota";
+
+        prenotaLabelContainer.appendChild(spacerLeft);
+        prenotaLabelContainer.appendChild(prenotaLabel);
+        prenotaLabelContainer.appendChild(spacerRight);
 
         var dataLabel = document.createElement("div");
         dataLabel.innerHTML = "<h2 nopad>Data</h2>";
@@ -124,7 +140,7 @@ class BookingSidebar extends HTMLElement {
 
         buttonContainer.appendChild(submitButton);
 
-        bookForm.appendChild(prenotaLabel);
+        bookForm.appendChild(prenotaLabelContainer);
         bookForm.appendChild(dataLabel);
         bookForm.appendChild(inputDate);
         bookForm.appendChild(oraLabel);

@@ -21,16 +21,15 @@
         <!-- Javascripts -->
         <script type="text/javascript" src="lib/zam-auth/zam-auth.js"></script>
         <script type="text/javascript" src="js/Sidebar.js"></script>
-        <script type="text/javascript" src="js/BookingSidebar.js"></script>
         <script type="text/javascript" src="js/ZamIcon.js"></script>
-        <script type="text/javascript" src="lib/zam-map/zam-map.js"></script>
         <script type="text/javascript" src="js/ZAMConditional.js"></script>
         <script type="text/javascript" src="js/Helpers.js"></script>
-        <script type="text/javascript" src="js/HomePage.js"></script>
+        <script type="text/javascript" src="js/ZAMBookingCard.js"></script>
+        <script type="text/javascript" src="js/Prenotazioni.js"></script>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body style="overflow-x: hidden;">
+    <body style="background-color: var(--GrigioMedio); overflow-x: hidden;">
         <zam-sidebar id="zam-sidebar">
             <zam-icon id="sidebar-icon"></zam-icon>
             <img id="sidebar-iconBig" src = "svg/ZAM.svg">
@@ -77,5 +76,14 @@
                 </button>
             </button>
         </zam-sidebar>
+
+        <zam-body>
+            <zam-row>
+                <zam-back onclick="Helpers.redir('./index.html')"></zam-back>
+                <zam-title>Prenotazioni</zam-title>
+            </zam-row>
+            <h1>Le mie prenotazioni</h1>
+            <zam-row cards id="prenotazioni"></zam-row>
+        </zam-body>
     </body>
 </html>

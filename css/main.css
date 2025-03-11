@@ -8,6 +8,7 @@
     --Bianco: #E8EAED;
 
     --Rosso: #AF0202;
+    --RossoScuro: #640000;
     --Verde: #02AF16;
 
     --Sidebar-Pad: 16px;
@@ -53,6 +54,15 @@
     --BookButton-PadV: 7px;
 
     --BookTopBottom: 18px;
+
+    --Back-Size: 50px;
+
+    --Body-Margin: 20px;
+
+    --Booking-Card-Width: 250px;
+    --Booking-Card-Height: 150px;
+    --Booking-Card-CR: 10px;
+    --Booking-Card-Pad: 10px;
 }
 
 * {
@@ -657,4 +667,136 @@ input[type="date"], input[type="time"] {
 
 .booking-row[top] {
     margin-top: var(--BookTopBottom);
+}
+
+.prenota-label-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.prenota-label-spacer {
+    flex: 1;
+    height: 1px;
+    background-color: var(--GrigioChiaro);
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+zam-body {
+    margin: 0;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
+    width: calc(100vw - var(--Sidebar-Width-Closed) + (var(--Sidebar-Pad) / 2));
+
+    margin-left: var(--Body-Margin);
+    margin-top: var(--Body-Margin);
+
+    position: fixed;
+    top: 0;
+    left: calc(var(--Sidebar-Width-Closed) + (var(--Sidebar-Pad) / 2));
+
+    color: white;
+}
+
+zam-title {
+    font-size: 50px;
+}
+
+zam-row {
+    display: flex;
+    flex-direction: row;
+    
+    align-items: center;
+
+    gap: 30px;
+}
+
+zam-back {
+    width: var(--Back-Size);
+    height: var(--Back-Size);
+
+    background-image: url("../svg/back.svg");
+    background-position-x: 50%;
+    background-position-y: 50%;
+
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+    border-radius: var(--Back-Size);
+}
+
+zam-booking-card {
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--GrigioScuro);
+    border: 1px solid var(--GrigioChiaro);
+
+    padding-left: var(--Booking-Card-Pad);
+    padding-right: var(--Booking-Card-Pad);
+    border-radius: var(--Booking-Card-CR);
+
+    width: var(--Booking-Card-Width);
+    height: var(--Booking-Card-Height);
+
+    flex-shrink: 0;
+}
+
+zam-booking-card h2 {
+    line-height: 0;
+}
+
+zam-booking-card p {
+    line-height: 0;
+
+    font-weight: 10;
+}
+
+*[cards] {
+    height: calc(var(--Booking-Card-Height) + var(--Booking-Card-Pad) * 2); 
+    overflow-x: scroll;
+    white-space: nowrap;
+    width: calc(100vw - var(--Sidebar-Width-Closed) + (var(--Sidebar-Pad) / 2));
+
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+*[cards]::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+.delete-button {
+    background-color: var(--Rosso);
+    color: white;
+
+    padding-left: var(--BookButton-PadH);
+    padding-right: var(--BookButton-PadH);
+    padding-top: var(--BookButton-PadV);
+    padding-bottom: var(--BookButton-PadV);
+
+    margin-bottom: var(--BookButton-PadV);
+
+    font-size: 17px;
+
+    border-radius: 100px;
+    border: none;
+
+    cursor: pointer;
+
+    transition: 0.25s background-color ease-in-out;
+}
+
+.delete-button:hover {
+    background-color: var(--RossoScuro);
+}
+
+*[gray] {
+    color: var(--GrigioChiarissimo)
 }
