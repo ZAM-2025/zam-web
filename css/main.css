@@ -38,6 +38,7 @@
     --Booking-Pad: 10px;
     --Booking-CR: 15px;
     --Booking-Right: 10px;
+    --Booking-Top: calc(50% - var(--Booking-Height) / 2 - var(--Booking-Pad));;
     --Booking-MaxWidth: 475px;
 
     --Booking-Row-Pad: 20px;
@@ -82,6 +83,15 @@
         --Accedi-Margin: 20px;
         --Accedi-Top: 0px;
         --Accedi-Container-Height: auto;
+
+        --Booking-Height: 100vh;
+        --Booking-CR: 0px;
+        --Booking-Right: 0px;
+        --Booking-Top: 0px;
+        --Booking-MaxWidth: calc(100vw - var(--Booking-Pad) * 2);
+        --Booking-Width: calc(100vw - var(--Booking-Pad) * 2);
+    
+        
     }
 
     *[mobile] {
@@ -235,7 +245,7 @@ zam-sidebar {
 
     gap: var(--Sidebar-Gap);
 
-    z-index: 2 !important;
+    z-index: 19 !important;
 
     transition: width 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
 
@@ -510,8 +520,8 @@ zam-booking-sidebar {
     height: var(--Booking-Height);
 
     position: fixed;
-    top: calc(50% - var(--Booking-Height) / 2 - var(--Booking-Pad));
     right: var(--Booking-Right);
+    top: var(--Booking-Top);
 
     background-color: var(--GrigioScuro);
     color: white;
@@ -522,12 +532,20 @@ zam-booking-sidebar {
     display: flex;
     flex-direction: column;
 
-    z-index: 3 !important;
+    z-index: 20 !important;
     animation: booking-sidebar-open 0.25s ease-in-out;
 }
 
 zam-booking-sidebar[closing] {
     animation: booking-sidebar-close 0.25s ease-in-out;
+}
+
+@media only screen and (max-width: 700px) {
+    zam-booking-sidebar {
+        padding: 0px;
+        padding-left: var(--Booking-Pad);
+        padding-right: var(--Booking-Pad);
+    }
 }
 
 @keyframes booking-sidebar-open {
