@@ -77,7 +77,7 @@ class BookingSidebar extends HTMLElement {
                 if(result.success) {
                     container.close();
                 } else {
-                    alert(`Impossibile prenotare.\n${assetName} prenotato nella fascia oraria selezionata.`);
+                    alert(`Impossibile prenotare ${assetName}:\n${result.message}`);
                 }
             });
         };
