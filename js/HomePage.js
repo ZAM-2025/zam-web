@@ -213,7 +213,7 @@ async function FillUserInfo() {
 }
 
 async function LogOut() {
-    var auth = new ZAMAuth();;
+    var auth = new ZAMAuth();
     
     await auth.logout((data) => {
         if(data.success) {
