@@ -11,6 +11,9 @@
     --RossoScuro: #640000;
     --Verde: #02AF16;
 
+    --BiancoTrasparente: #ffffff21;
+    --ContornoTrasparente: #ffffffAB;
+
     --Sidebar-Pad: 16px;
     --Sidebar-Gap: 10px;
     --Sidebar-Width-Closed: 63px;
@@ -106,11 +109,11 @@
 }
 @font-face {
     font-family: SF_Pro_Display_Prova2;
-    src: url(../fonts/SF-Pro-Display-Thin.otf);
+    src: url(../fonts/SF-Pro-Display-Light.otf);
 }
 
 * {
-    font-family: SF_Pro_Display_Regular;
+    font-family: SF_Pro_Display_Prova2;
 }
 
 /*Icone di google*/
@@ -130,6 +133,11 @@ body{
 
 a {
     color: var(--Bianco);
+}
+
+b{
+    font-family: SF_Pro_Display_Regular;
+    font-weight: 200;
 }
 
 #Z {
@@ -399,10 +407,11 @@ zam-icon {
 }
 
 .AccediText {
+    font-size: 14px;
     font-weight: normal;
     line-height: normal;
     margin: 0;
-    width: 75%;
+    width: 68%;
 }
 
 *[light] {
@@ -411,8 +420,8 @@ zam-icon {
 }
 
 .LoginField {
-    background-color: #ffffff30;
-    border: 1px solid #ffffff60;
+    background-color: var(--BiancoTrasparente);
+    border: 1px solid var(--ContornoTrasparente);
     padding-left: var(--Login-Field-Pad);
     padding-right: var(--Login-Field-Pad);
 
