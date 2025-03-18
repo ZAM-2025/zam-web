@@ -21,10 +21,10 @@
     --Generic-Shadow: 0px 15px 25px var(--Nero);
 
     --Login-BG: #1C1C1C;
-    --Accedi-Width: 75vw;
-    --Accedi-Height: 75vh;
+    --Accedi-Width: 58vw;
+    --Accedi-Height: 48vh;
     --Accedi-CR: 15px;
-    --Accedi-Margin: 40px;
+    --Accedi-Margin: 35px;
     --Accedi-Dir: row;
     --Accedi-Top: 10vmin;
     --Accedi-Container-Height: 100%;
@@ -101,29 +101,16 @@
 
 /*Fonts*/
 @font-face {
-    font-family: SFPro;
-    src: url(../fonts/SFPRODISPLAYREGULAR.OTF);
-    font-weight: normal;
+    font-family: SF_Pro_Display_Regular;
+    src: url(../fonts/SF-Pro-Display-Regular.otf);
 }
 @font-face {
-    font-family: SFPro;
-    src: url(../fonts/SFPRODISPLAYBOLD.OTF);
-    font-weight: bolder;
-}
-@font-face {
-    font-family: SFPro;
-    src: url(../fonts/SFPRODISPLAYMEDIUM.OTF);
-    font-weight: medium;
-}
-@font-face {
-    font-family: SFPro;
-    src: url(../fonts/SFPRODISPLAYLIGHTITALIC.OTF);
-    font-weight: 10;
+    font-family: SF_Pro_Display_Prova2;
+    src: url(../fonts/SF-Pro-Display-Thin.otf);
 }
 
 * {
-    font-family: SFPro;
-    font-weight: normal;
+    font-family: SF_Pro_Display_Regular;
 }
 
 /*Icone di google*/
@@ -347,18 +334,23 @@ zam-icon {
 
 .ZAMLogo {
     margin-top: 10px;
-    margin-left: calc(var(--Sidebar-LPad-Open) / 4);
+    margin-left: 0px;
+    margin-bottom: 6px;
     background-repeat: no-repeat;
 
     width: fit-content;
-    height: 40px;
+    height: 39px;
 
     cursor: pointer;
     user-select: none;
 }
 
 .LoginBody {
-    background-color: var(--Login-BG);
+    background-color: var(--GrigioMedio);
+    background-image: url(../img/Sfondo.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
     display: flex;
 
     margin: 0;
