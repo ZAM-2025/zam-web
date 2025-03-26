@@ -24,8 +24,8 @@
     --Generic-Shadow: 0px 15px 25px var(--Nero);
 
     --Login-BG: #1C1C1C;
-    --Accedi-Width: 58vw;
-    --Accedi-Height: 48vh;
+    --Accedi-Width: auto;
+    --Accedi-Height: auto;
     --Accedi-CR: 15px;
     --Accedi-Margin: 35px;
     --Accedi-Dir: row;
@@ -67,6 +67,23 @@
     --Booking-Card-Height: 150px;
     --Booking-Card-CR: 10px;
     --Booking-Card-Pad: 10px;
+
+    --Scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --Nero: #ffffff;
+        --GrigioScuro: #E3E3E3;
+        --GrigioMedio: #dedede;
+        --GrigioChiaro: #bdbdbd;
+        --GrigioChiarissimo: rgb(188, 188, 188);
+        --Bianco: #000000;
+        --Login-BG: #d5d5d5;
+
+        --Scheme: light;
+        --Generic-Shadow: 0px 15px 25px rgba(0, 0, 0, 0.1);
+    }
 }
 
 * {
@@ -93,8 +110,10 @@
         --Booking-Top: 0px;
         --Booking-MaxWidth: calc(100vw - var(--Booking-Pad) * 2);
         --Booking-Width: calc(100vw - var(--Booking-Pad) * 2);
-    
-        
+    }
+
+    .zamcaptcha-img {
+        height: fit-content !important;
     }
 
     *[mobile] {
@@ -110,6 +129,11 @@
 @font-face {
     font-family: SF_Pro_Display_Prova2;
     src: url(../fonts/SF-Pro-Display-Light.otf);
+}
+@font-face {
+    font-family: SF_Pro_Display_Bold;
+    src: url(../fonts/SF-Pro-Display-Bold.otf);
+    font-weight: bold;
 }
 
 * {
@@ -246,8 +270,8 @@ zam-sidebar {
 
     border-right: 1px var(--GrigioChiaro) solid;
 
-    -webkit-box-shadow: 24px 0px 50px -3px rgba(0,0,0,0.40); 
-    box-shadow: 24px 0px 50px -3px rgba(0,0,0,0.40);
+    -webkit-box-shadow: 24px 0px 50px -3px rgba(0,0,0,0.25); 
+    box-shadow: 24px 0px 50px -3px rgba(0,0,0,0.25);
 }
 
 #SidebarText {
@@ -355,7 +379,7 @@ zam-icon {
 
 .LoginBody {
     background-color: var(--GrigioMedio);
-    background-image: url(../img/Sfondo.png);
+    /*background-image: url(../img/Sfondo.png);*/
     background-repeat: no-repeat;
     background-position: right;
     background-size: contain;
@@ -415,7 +439,6 @@ zam-icon {
 }
 
 *[light] {
-    font-family: SFPro;
     font-weight: 10;
 }
 
@@ -425,7 +448,6 @@ zam-icon {
     padding-left: var(--Login-Field-Pad);
     padding-right: var(--Login-Field-Pad);
 
-    font-family: SFPro;
     color: var(--Bianco);
     font-size: large;
     
@@ -471,13 +493,17 @@ div[row] {
     display: none !important;
 }
 
+*[bold] {
+    font-family: SF_Pro_Display_Bold;
+    font-weight: bold;
+}
+
 .indicatore {
     border-radius: 100%;
 
     color: var(--GrigioChiaro);
 
     transition: background-color 0.25s ease-in-out;
-    font-style: italic;
     font-weight: 10;
 }
 
@@ -525,7 +551,7 @@ zam-booking-sidebar {
     top: var(--Booking-Top);
 
     background-color: var(--GrigioScuro);
-    color: white;
+    color: var(--Bianco);
     padding: var(--Booking-Pad);
     border: 1px var(--GrigioChiaro) solid;
     border-radius: var(--Booking-CR);
@@ -625,8 +651,8 @@ span[red] {
 
 input[type="date"], input[type="time"] {
     background-color: var(--GrigioChiaro);
-    color: var(--GrigioChiarissimo);
-    color-scheme: dark;
+    color: var(--Bianco);
+    color-scheme: var(--Scheme);
 
     border: 1px var(--GrigioChiarissimo) solid;
     border-radius: var(--DateTime-CR);
@@ -641,12 +667,11 @@ input[type="date"], input[type="time"] {
     margin-top: var(--DateTime-MTop);
     margin-bottom: var(--DateTime-MBot);
 
-    font-family: SFPro;
 }
 
 .book-button {
-    background-color: white;
-    color: black;
+    background-color: var(--Bianco);
+    color: var(--Nero);
 
     padding-left: var(--BookButton-PadH);
     padding-right: var(--BookButton-PadH);
@@ -720,7 +745,7 @@ zam-body {
     top: 0;
     left: calc(var(--Sidebar-Width-Closed) + (var(--Sidebar-Pad) / 2));
 
-    color: white;
+    color: var(--Bianco);
 }
 
 zam-title {
