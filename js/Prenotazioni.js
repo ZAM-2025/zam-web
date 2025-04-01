@@ -237,8 +237,8 @@ function FillPrenotazioni() {
     });
 }
 
-window.onload = () => {
+window.addEventListener("load", () => {
     HomePage();
     FillUserInfo();
     FillPrenotazioni();
-}
+});

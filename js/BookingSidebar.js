@@ -3,7 +3,7 @@ class BookingSidebar extends HTMLElement {
         super();
     }
 
-    add(assetName, start, end, status, assetID) {
+    add(assetName, start, end, status, assetID, isEdit) {
         var sideContainer = document.createElement("div");
         sideContainer.className = "booking-row";
         sideContainer.setAttribute("top", "");
@@ -50,6 +50,14 @@ class BookingSidebar extends HTMLElement {
         var bookForm = document.createElement("form");
         bookForm.className = "book-form";
 
+        var errorLabel = document.createElement("span");
+        errorLabel.innerText = "";
+
+        // TODO: spostare tutta sta roba nel CSS quando Erica fa il commit
+        errorLabel.setAttribute("red", "");
+        errorLabel.style.textAlign = "center";
+        errorLabel.style.marginBottom = "10px";
+
         var container = this;
         bookForm.onsubmit = (event) => {
             event.preventDefault();
@@ -71,15 +79,30 @@ class BookingSidebar extends HTMLElement {
             var bookEnd = `${endHour}:${endMinute}`;
 
             var auth = new ZAMAuth();
-            auth.book(assetID, startDateTime, endDateTime, (result) => {
-                console.log(result);
 
-                if(result.success) {
-                    container.close();
-                } else {
-                    alert(`Impossibile prenotare ${assetName}:\n${result.message}`);
-                }
-            });
+            if(isEdit != undefined && isEdit != null && isEdit === true) {
+                // qui assetID prende il ruolo di bookingID
+                auth.editBooking(assetID, startDateTime, endDateTime, (result) => {
+                    console.log(result);
+    
+                    if(result.success) {
+                        container.close();
+                        window.location.reload();
+                    } else {
+                        errorLabel.innerText = `Impossibile prenotare ${assetName}:\n${result.message}`;
+                    }
+                });
+            } else {
+                auth.book(assetID, startDateTime, endDateTime, (result) => {
+                    console.log(result);
+    
+                    if(result.success) {
+                        container.close();
+                    } else {
+                        errorLabel.innerText = `Impossibile prenotare ${assetName}:\n${result.message}`;
+                    }
+                });
+            }
         };
 
         var prenotaLabelContainer = document.createElement("div");
@@ -148,6 +171,7 @@ class BookingSidebar extends HTMLElement {
         bookForm.appendChild(endOraLabel);
         bookForm.appendChild(endHour);
         bookForm.appendChild(buttonSpacer);
+        bookForm.appendChild(errorLabel);
         bookForm.appendChild(buttonContainer);
 
         this.appendChild(bookForm);
