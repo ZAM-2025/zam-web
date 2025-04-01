@@ -27,6 +27,33 @@ function RedirHome() {
     window.location.href = "./index.html";
 }
 
+function ContinueAccedi() {
+    var Prossimo = document.getElementById("ContinuaCaptcha");
+    var Precedente = document.getElementById("ContinuaAccedi");
+    var submitButton = document.getElementById("zam-submit");
+
+    Prossimo.style.display = "block";
+    Precedente.style.display = "none";
+    EnableButton(submitButton)
+
+    var session = new CaptchaSession("http", "localhost:8080", "lib/zamcaptcha-js", (data) => {
+        console.log(data);
+        __captchaID = null;
+
+        if(data.success) {
+            __captchaID = data.id;
+        }
+    });
+
+    session.setFetchCallback(() => {
+        __captchaID = null;
+    });
+
+    setInterval(() => {
+        ValidateLogin(userElem.value, passElem.value, submitButton);
+    }, 200);
+}
+
 function SendLogin(data) {
     data.preventDefault();
 
@@ -51,22 +78,9 @@ function SendLogin(data) {
 window.onload = () => {
     var userElem = document.getElementById("username");
     var passElem = document.getElementById("password");
-    var submitButton = document.getElementById("zam-submit");
-
-    var session = new CaptchaSession("http", "localhost:8080", "lib/zamcaptcha-js", (data) => {
-        console.log(data);
-        __captchaID = null;
-
-        if(data.success) {
-            __captchaID = data.id;
-        }
-    });
-
-    session.setFetchCallback(() => {
-        __captchaID = null;
-    });
+    var continueButton = document.getElementById("zam-continue");
 
     setInterval(() => {
-        ValidateLogin(userElem.value, passElem.value, submitButton);
+        ValidateLogin(userElem.value, passElem.value, continueButton);
     }, 200);
 };

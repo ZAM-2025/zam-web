@@ -16,22 +16,31 @@
                 <h1 style="font-size: 33px;font-weight: 100;font-family: SF_Pro_Display_Regular;">Accedi</h1>
                 <p class="AccediText">Usa il tuo account <b>Dipendente</b>, <b>Coordinatore</b> o <b>Gestore per accedere</b></p>
             </div>
-            <form onsubmit="SendLogin(event)" class="AccediContainer AccediTop">
-                <input required placeholder="Nome Utente" id="username" name="username" class="LoginField" type="text">
-                <input required placeholder="Password" id="password" name="password" class="LoginField" type="password">
-                <!--
-                <div row>
-                    <input type="checkbox" name="remember" checked>
-                    <label for="remember">Ricorda</label>
+            <form onsubmit="SendLogin(event)" class="AccediContainer">
+                <div id="ContinuaAccedi">
+                    <input required placeholder="Nome Utente" id="username" name="username" class="LoginField" type="text">
+                    <input required placeholder="Password" id="password" name="password" class="LoginField" type="password">
+                    <!--
+                    <div row>
+                        <input type="checkbox" name="remember" checked>
+                        <label for="remember">Ricorda</label>
+                        <zam-spacer></zam-spacer>
+                        <a href="forgot.html">Password dimenticata?</a>
+                    </div>
+                    -->
                     <zam-spacer></zam-spacer>
-                    <a href="forgot.html">Password dimenticata?</a>
+                    <div class="ButtonSpacer" row>
+                        <zam-spacer></zam-spacer>
+                        <button disabled type="button" class="LoginButton" id="zam-continue" onclick="ContinueAccedi()">Accedi</button>  
+                    </div>
                 </div>
-                -->
-                <div id="zamcaptcha"></div>
-                <zam-spacer></zam-spacer>
-                <div class="ButtonSpacer" row>
+                <div id="ContinuaCaptcha" style="display:none">
+                    <div id="zamcaptcha"></div>
                     <zam-spacer></zam-spacer>
-                    <input disabled class="LoginButton" id="zam-submit" type="submit" value="Accedi">    
+                    <div class="ButtonSpacer" row>
+                        <zam-spacer></zam-spacer>
+                        <input disabled class="LoginButton" id="zam-submit" type="submit" value="Accedi">    
+                    </div>    
                 </div>
             </form>
             <zam-spacer></zam-spacer>

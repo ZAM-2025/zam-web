@@ -6,6 +6,7 @@
     --GrigioChiaro: #2C2C2C;
     --GrigioChiarissimo: rgb(188, 188, 188);
     --Bianco: #E8EAED;
+    --BiancoSporco: #B1B1B1;
 
     --Rosso: #AF0202;
     --RossoScuro: #640000;
@@ -21,18 +22,18 @@
     --Sidebar-Width-Open: 300px;
     --Sidebar-LPad-Open: 15px;
 
-    --Generic-Shadow: 0px 15px 25px var(--Nero);
+    --Generic-Shadow: 0px 4px 16px 0px #00000040;
 
     --Login-BG: #1C1C1C;
-    --Accedi-Width: auto;
-    --Accedi-Height: auto;
+    --Accedi-Width: 68vw;
+    --Accedi-Height: 47vh;
     --Accedi-CR: 15px;
-    --Accedi-Margin: 35px;
+    --Accedi-Margin: 3vw;
     --Accedi-Dir: row;
-    --Accedi-Top: 10vmin;
+    --Accedi-Top: 9vh;
     --Accedi-Container-Height: 100%;
-    --Login-Field-Height: 60px;
-    --Login-Field-CR: 12px;
+    --Login-Field-Height: 7vh;
+    --Login-Field-CR: 6px;
     --Login-Field-Pad: 20px;
     --Login-Button-CR: 20px;
     
@@ -152,7 +153,7 @@
 /*Body*/
 body{
     margin: 0%;
-    background-color: var(--GrigioChiaro);
+    background-image: url(../img/Sfondo.png);
 }
 
 a {
@@ -379,7 +380,6 @@ zam-icon {
 
 .LoginBody {
     background-color: var(--GrigioMedio);
-    /*background-image: url(../img/Sfondo.png);*/
     background-repeat: no-repeat;
     background-position: right;
     background-size: contain;
@@ -413,17 +413,21 @@ zam-icon {
     display: flex;
     flex-direction: column;
 
+    padding-top: 2vh;
+    padding-left: 3vw;
+
     width: var(--Accedi-Container-Height);
 
     color: var(--Bianco);
 
+    line-height: 5px;
+}
+
+#ContinuaAccedi {
+    margin-bottom: calc(var(--Accedi-Margin) / 2);
+    margin-top: var(--Accedi-Top);
     margin-left: var(--Accedi-Margin);
     margin-right: var(--Accedi-Margin);
-
-    margin-top: calc(var(--Accedi-Margin) / 2);
-    margin-bottom: calc(var(--Accedi-Margin) / 2);
-
-    line-height: 5px;
 }
 
 .AccediTop {
@@ -435,7 +439,7 @@ zam-icon {
     font-weight: normal;
     line-height: normal;
     margin: 0;
-    width: 68%;
+    width: 70%;
 }
 
 *[light] {
@@ -448,12 +452,25 @@ zam-icon {
     padding-left: var(--Login-Field-Pad);
     padding-right: var(--Login-Field-Pad);
 
-    color: var(--Bianco);
+    color: var(--BiancoSporco);
     font-size: large;
     
     height: var(--Login-Field-Height);
+    width: 24vw;
     border-radius: var(--Login-Field-CR);
     margin-bottom: 15px;
+    margin-left: 3vw;
+    margin-right: 1vw;
+}
+
+.LoginField:focus {
+    border: 1px solid var(--Bianco);
+    color: var(--Bianco);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    transition: background-color 0s 600000s, color 0s 600000s !important;
 }
 
 .LoginButton {
