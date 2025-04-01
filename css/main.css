@@ -442,6 +442,7 @@ zam-icon {
     width: 70%;
 }
 
+
 *[light] {
     font-weight: 10;
 }
@@ -498,6 +499,31 @@ input:-webkit-autofill:focus {
 
 .ButtonSpacer {
     padding-top: 4vmin;
+}
+
+.edit-button {
+    background-color: var(--Bianco);
+    color: var(--Nero);
+
+    padding-left: var(--BookButton-PadH);
+    padding-right: var(--BookButton-PadH);
+    padding-top: var(--BookButton-PadV);
+    padding-bottom: var(--BookButton-PadV);
+
+    margin-bottom: var(--BookButton-PadV);
+
+    font-size: 17px;
+
+    border-radius: 100px;
+    border: none;
+
+    cursor: pointer;
+
+    transition: 0.25s background-color ease-in-out;
+}
+
+.edit-button:hover {
+    background-color: var(--GrigioChiarissimo);
 }
 
 div[row] {
