@@ -844,3 +844,16 @@ zam-booking-card p {
 *[gray] {
     color: var(--GrigioChiarissimo)
 }
+
+.debug-marker {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    opacity: 25%;
+    z-index: 15;
+    width: fit-content;
+    font-size: x-large;
+    color: var(--Bianco);
+    background-color: var(--GrigioChiaro);
+    cursor: pointer;
+}

@@ -28,5 +28,31 @@ let Helpers = {
             default:
                 return "Giorno non valido";
         }
+    },
+    isDebug: function() {
+        return location.hostname == "localhost"
     }
 }
+
+addEventListener("load", () => {
+    if(Helpers.isDebug()) {
+        console.log("Running on localhost");
+
+        const pageEnd = performance.mark('pageEnd');
+        const loadTime = parseInt(pageEnd.startTime);
+
+        var debugMarker = document.createElement("div");
+        debugMarker.className = "debug-marker";
+        debugMarker.innerText = "DEBUG";
+
+        debugMarker.onmouseover = () => {
+            debugMarker.innerText = "Pagina caricata in " + loadTime + "ms";
+        };
+
+        debugMarker.onmouseout = () => {
+            debugMarker.innerText = "DEBUG";
+        }
+        
+        document.body.appendChild(debugMarker);
+    }
+});
