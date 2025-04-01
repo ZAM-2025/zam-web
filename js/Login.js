@@ -34,7 +34,7 @@ function ContinueAccedi() {
 
     Prossimo.style.display = "block";
     Precedente.style.display = "none";
-    EnableButton(submitButton)
+    EnableButton(submitButton);
 
     var session = new CaptchaSession("http", "localhost:8080", "lib/zamcaptcha-js", (data) => {
         console.log(data);
