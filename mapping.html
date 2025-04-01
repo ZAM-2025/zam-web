@@ -19,10 +19,10 @@
         crossorigin=""></script>
 
         <!-- Javascripts -->
+        <script type="text/javascript" src="js/Helpers.js"></script>
         <script type="text/javascript" src="lib/zam-auth/zam-auth.js"></script>
         <script type="text/javascript" src="js/Sidebar.js"></script>
         <script type="text/javascript" src="lib/zam-map/zam-map.js"></script>
-        <script type="text/javascript" src="js/Helpers.js"></script>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -30,6 +30,12 @@
         
     </body>
     <script>
-        var map = new ZAMMap(ZAMMapType.Ground, "lib/zam-map/", undefined, true);
+        window.addEventListener("load", () => {
+            if(!Helpers.isDebug()) {
+                Helpers.redir("./index.html");
+            }
+
+            var map = new ZAMMap(ZAMMapType.Ground, "lib/zam-map/", undefined, true);
+        });
     </script>
 </html>

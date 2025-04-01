@@ -8,6 +8,7 @@ let ZAMBookingCard = {
         var bookingStart = data.booking.inizio;
         var bookingEnd = data.booking.fine;
         var bookingID = data.booking.id;
+        var isBooked = data.booking.booked;
 
         var bookingDate = new Date(bookingStart);
         var bookingDay = Helpers.getHTMLDayString(bookingDate.getDay());
@@ -33,20 +34,34 @@ let ZAMBookingCard = {
         deleteButton.innerText = "Elimina";
 
         deleteButton.onclick = () => {
-            var auth = new ZAMAuth();
+            var dialog = confirm("Sei sicuro di voler cancellare questa prenotazione?");
 
-            auth.deleteBooking(bookingID, (data) => {
-                if(data.success) {
-                    location.reload();
-                } else {
-                    alert("Errore nella cancellazione!");
-                }
-            })
+            if(dialog) {
+                var auth = new ZAMAuth();
+
+                auth.deleteBooking(bookingID, (data) => {
+                    if(data.success) {
+                        location.reload();
+                    } else {
+                        alert("Errore nella cancellazione!");
+                    }
+                });
+            }
+        };
+
+        var editButton = document.createElement("button");
+        editButton.className = "edit-button";
+        editButton.innerText = "Modifica";
+
+        editButton.onclick = () => {
+            var bookingSidebar = new BookingSidebar();
+            bookingSidebar.add(assetName, startTime, endTime, !isBooked, bookingID, true);
         };
 
         card.appendChild(title);
         card.appendChild(info);
         card.appendChild(spacer);
+        card.appendChild(editButton);
         card.appendChild(deleteButton);
 
         container.appendChild(card);

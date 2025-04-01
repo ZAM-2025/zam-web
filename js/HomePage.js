@@ -224,7 +224,7 @@ async function LogOut() {
     });
 }
 
-window.onload = () => {
+window.addEventListener("load", () => {
     HomePage();
     FillUserInfo();
-}
+});

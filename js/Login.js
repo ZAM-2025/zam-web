@@ -48,7 +48,7 @@ function SendLogin(data) {
     });
 }
 
-window.onload = () => {
+window.addEventListener("load", () => {
     var userElem = document.getElementById("username");
     var passElem = document.getElementById("password");
     var submitButton = document.getElementById("zam-submit");
@@ -69,4 +69,4 @@ window.onload = () => {
     setInterval(() => {
         ValidateLogin(userElem.value, passElem.value, submitButton);
     }, 200);
-};
+});
