@@ -7,13 +7,14 @@
     --GrigioChiarissimo: rgb(188, 188, 188);
     --Bianco: #E8EAED;
     --BiancoSporco: #B1B1B1;
+    --Osso: #DCDCDC;
 
     --Rosso: #AF0202;
     --RossoScuro: #640000;
     --Verde: #02AF16;
 
     --BiancoTrasparente: #ffffff21;
-    --ContornoTrasparente: #ffffffAB;
+    --ContornoTrasparente: #ffffff69;
 
     --Sidebar-Pad: 16px;
     --Sidebar-Gap: 10px;
@@ -34,7 +35,7 @@
     --Accedi-Container-Height: 100%;
     --Login-Field-Height: 7vh;
     --Login-Field-CR: 6px;
-    --Login-Field-Pad: 20px;
+    --Login-Field-Pad: 18px;
     --Login-Button-CR: 20px;
     
     --Booking-Width: 50vw;
@@ -128,17 +129,20 @@
     src: url(../fonts/SF-Pro-Display-Regular.otf);
 }
 @font-face {
-    font-family: SF_Pro_Display_Prova2;
-    src: url(../fonts/SF-Pro-Display-Light.otf);
+    font-family: SF_Pro_Display_Thin;
+    src: url(../fonts/SF-Pro-Display-Thin.otf);
+}
+@font-face {
+    font-family: SF_Pro_Display_Medium;
+    src: url(../fonts/SF-Pro-Display-Medium.otf);
 }
 @font-face {
     font-family: SF_Pro_Display_Bold;
     src: url(../fonts/SF-Pro-Display-Bold.otf);
-    font-weight: bold;
 }
 
 * {
-    font-family: SF_Pro_Display_Prova2;
+    font-family: SF_Pro_Display_Thin;
 }
 
 /*Icone di google*/
@@ -469,26 +473,30 @@ zam-icon {
     color: var(--Bianco);
 }
 
+::placeholder {
+    font-weight: 100;
+    font-family: 'SF_Pro_Display_Regular';
+    color: var(--BiancoSporco);
+    font-size: 16px;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
     transition: background-color 0s 600000s, color 0s 600000s !important;
 }
 
 .LoginButton {
-    width: 150px;
-
-    background-color: var(--Bianco);
-    
+    width: 115px;
+    background-color: var(--Osso);
     color: var(--Nero);
-    font-size: large;
-
+    font-size: 15px;
+    font-family: SF_Pro_Display_Regular;
     border: none;
-    padding: 5px;
-
+    padding: 6px;
     border-radius: var(--Login-Button-CR);
     cursor: pointer;
-
     transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+    margin-right: 20px;
 }
 
 .LoginButton:disabled {
@@ -498,7 +506,7 @@ input:-webkit-autofill:focus {
 }
 
 .ButtonSpacer {
-    padding-top: 4vmin;
+    padding-top: 11vh;
 }
 
 .edit-button {
