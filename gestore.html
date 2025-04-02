@@ -4,37 +4,92 @@
         <title>ZAM | Z-Volta Asset Manager</title>
 
         <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+        <!-- Css -->
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="lib/zam-map/zam-map.css">
+
+        <!-- Leaflet -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+        <!-- Make sure you put this AFTER Leaflet's CSS -->
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+
+        <!-- Javascripts -->
+        <script type="text/javascript" src="js/Helpers.js"></script>
+        <script type="text/javascript" src="lib/zam-auth/zam-auth.js"></script>
         <script type="text/javascript" src="js/Sidebar.js"></script>
         <script type="text/javascript" src="js/ZamIcon.js"></script>
+        <script type="text/javascript" src="js/ZAMConditional.js"></script>
+        <script type="text/javascript" src="js/ZAMUserCard.js"></script>
+        <script type="text/javascript" src="js/BookingSidebar.js"></script>
+        <script type="text/javascript" src="js/UserManagement.js"></script>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body style="overflow-x: hidden;" onload="IconLoader()">
-        <zam-sidebar>
-            <zam-icon></zam-icon>
+    <body style="background-color: var(--GrigioMedio); overflow-x: hidden;">
+        <zam-sidebar id="zam-sidebar">
+            <zam-icon id="sidebar-icon"></zam-icon>
+            <img id="sidebar-iconBig" src = "svg/ZAM.svg">
 
             <zam-spacer></zam-spacer>
  
-            <button id="PulsanteIcona">
-                <img src = "svg/Manage_Accounts.svg" style="width:29px;height:auto;"/>
+            <button onclick="Helpers.redir('./prenotazioni.html')" zam-conditional="!gest" id="PulsanteIcona">
+                <img src="svg/Confirmation_number.svg" style="width:29px;height:auto;"/>
+                <h1 id="SidebarText">Prenotazioni</h1>
             </button>
-            <button id="PulsanteIcona">
-                <img src = "svg/Groups.svg" style="width:29px;height:auto;"/>
+            <!--<Coordinatori>-->
+            <button onclick="Helpers.redir('./wip.html')" zam-conditional="gest" id="PulsanteIcona">
+                <img src="svg/Manage_Accounts.svg" style="width:29px;height:auto;"/>
+                <h1 id="SidebarText">Gestione Utenti</h1>
             </button>
-            <button id="PulsanteIcona">
-                <img src = "svg/Edit.svg" style="width:29px;height:auto;"/>
+            <button onclick="Helpers.redir('./wip.html')" zam-conditional="coord|gest" id="PulsanteIcona">
+                <img src="svg/Groups.svg" style="width:29px;height:auto;"/>
+                <h1 id="SidebarText">Gestione Prenotazioni</h1>
             </button>
-            <button id="PulsanteIcona">
-                <img src = "svg/Settings.svg" style="width:29px;height:auto;"/>
+            <button onclick="Helpers.redir('./wip.html')" zam-conditional="gest" id="PulsanteIcona">
+                <img src="svg/Edit.svg" style="width:29px;height:auto;"/>
+                <h1 id="SidebarText">Gestione Assets</h1>
+            </button>
+            <!--
+            <button onclick="Helpers.redir('./wip.html')" id="PulsanteIcona">
+                <img src="svg/Accessibility.svg" style="width:29px;height:auto;"/>
+                <h1 id="SidebarText">Accessibilit&agrave;</h1>
+            </button>
+            -->
+            <!--</Coordinatori>-->
+            <button onclick="Helpers.redir('./wip.html')" id="PulsanteIcona">
+                <img src="svg/Settings.svg" style="width:29px;height:auto;"/>
+                <h1 id="SidebarText">Impostazioni</h1>
             </button>
 
             <zam-spacer></zam-spacer>
 
-            <button id="PulsanteIcona">
-                <img src = "svg/Account.svg" style="width:29px;height:auto;"/>
+            <button id="PulsanteIcona" style="height: 70px; align-items: center;">
+                <img id="SidebarAccIcon" src = "svg/Account.svg" style="width:auto;height:29px;"/>
+                <div id="Sidebar-Account">
+                    <h1 id="SidebarAccTitle">Caricamento...</h1>
+                    <h1 id="SidebarAccDesc">Gestione Account</h1>
+                </div>
+                <button onclick="LogOut()" id="EsciAccount">
+                    <h1>Esci</h1>
+                </button>
             </button>
         </zam-sidebar>
-        
+
+        <zam-body>
+            <zam-row>
+                <zam-back onclick="Helpers.redir('./index.html')"></zam-back>
+                <zam-title>Gestione Utenti</zam-title>
+            </zam-row>
+            <zam-row>
+                <h1>Dipendenti</h1>
+                <a class="add-button" href="./newuser.html"></a>
+            </zam-row>
+            <zam-row cards id="prenotazioni"></zam-row>
+        </zam-body>
     </body>
 </html>

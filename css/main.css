@@ -908,3 +908,43 @@ zam-booking-card p {
     background-color: var(--GrigioChiaro);
     cursor: pointer;
 }
+
+.add-button {
+    width: var(--Close-Size);
+    height: var(--Close-Size);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+    color: var(--GrigioScuro);
+
+    border: none;
+    border-radius: var(--Close-Size);
+
+    cursor: pointer;
+
+    background-image: url("../svg/Add.svg");
+    background-repeat: no-repeat;
+    background-size: 45%;
+    background-position-x: 50%;
+    background-position-y: 50%;
+
+    transition: background-color 0.25s ease-in-out;
+}
+
+.add-button:hover {
+    background-color: lightgray;
+}
+
+option {
+    background-color: var(--GrigioMedio);
+    color: var(--Bianco);
+}
+
+option[disabled] {
+    background-color: var(--GrigioMedio);
+    color: gray;
+}
