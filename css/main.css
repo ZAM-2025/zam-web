@@ -425,13 +425,20 @@ zam-icon {
     color: var(--Bianco);
 
     line-height: 5px;
+    margin-right: var(--Accedi-Margin);
 }
 
 #ContinuaAccedi {
+    display: flex;
+    flex-direction: column;
     margin-bottom: calc(var(--Accedi-Margin) / 2);
     margin-top: var(--Accedi-Top);
-    margin-left: var(--Accedi-Margin);
-    margin-right: var(--Accedi-Margin);
+    height: 100%;
+}
+
+#ContinuaCaptcha {
+    flex-direction: column;
+    height: 100%;
 }
 
 .AccediTop {
@@ -461,11 +468,9 @@ zam-icon {
     font-size: large;
     
     height: var(--Login-Field-Height);
-    width: 24vw;
     border-radius: var(--Login-Field-CR);
     margin-bottom: 15px;
     margin-left: 3vw;
-    margin-right: 1vw;
 }
 
 .LoginField:focus {
@@ -496,7 +501,6 @@ input:-webkit-autofill:focus {
     border-radius: var(--Login-Button-CR);
     cursor: pointer;
     transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
-    margin-right: 20px;
 }
 
 .LoginButton:disabled {

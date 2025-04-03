@@ -32,7 +32,7 @@ function ContinueAccedi() {
     var Precedente = document.getElementById("ContinuaAccedi");
     var submitButton = document.getElementById("zam-submit");
 
-    Prossimo.style.display = "block";
+    Prossimo.style.display = "flex";
     Precedente.style.display = "none";
     EnableButton(submitButton);
 
@@ -51,10 +51,6 @@ function ContinueAccedi() {
     session.setFetchCallback(() => {
         __captchaID = null;
     });
-
-    setInterval(() => {
-        ValidateLogin(userElem.value, passElem.value, submitButton);
-    }, 200);
 }
 
 function SendLogin(data) {
