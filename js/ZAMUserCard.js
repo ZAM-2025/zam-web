@@ -14,9 +14,9 @@ let ZAMUserCard = {
         deleteButton.innerText = "Elimina";
 
         deleteButton.onclick = () => {
-            //var dialog = confirm("Sei sicuro di voler cancellare questa prenotazione?");
+            var dialog = confirm(`Sei sicuro di voler cancellare l'utente ${data.nome} ${data.cognome}?`);
 
-            //if(dialog) {
+            if(dialog) {
             //    var auth = new ZAMAuth();
 
             //    auth.deleteBooking(bookingID, (data) => {
@@ -26,7 +26,7 @@ let ZAMUserCard = {
             //            alert("Errore nella cancellazione!");
             //        }
             //    });
-            //}
+            }
         };
 
         var editButton = document.createElement("button");

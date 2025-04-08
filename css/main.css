@@ -904,7 +904,7 @@ zam-booking-card p {
     position: fixed;
     bottom: 0px;
     right: 0px;
-    opacity: 25%;
+    opacity: 50%;
     z-index: 15;
     width: fit-content;
     font-size: x-large;

@@ -13,24 +13,20 @@
             <div class="AccediContainer">
                 <img class="ZAMLogo" src = "svg/ZAM.svg">
                 <h1 class="AccediTextTitolo" style="font-size: 33px;font-weight: 100;font-family: SF_Pro_Display_Regular;">Creazione utente</h1>
-                <p class="AccediText">Crea un utente</b></p>
+                <p id="crea-text" class="AccediText">Crea un utente</b></p>
             </div>
             <form onsubmit="SendLogin(event)" class="AccediContainer">
-                    <input required placeholder="Nome Utente" id="username" name="username" class="LoginField" type="text">
-                    <input required placeholder="Password" id="password" name="password" class="LoginField" type="password">
-                    <input required placeholder="Nome" id="nome" name="nome" class="LoginField" type="text">
-                    <input required placeholder="Cognome" id="cognome" name="cognome" class="LoginField" type="text">
-                    <select required id="type" name="type" class="LoginField">
-                        <option disabled selected value=-1>Tipo di utente</option>
-                        <option value=0>Dipendente</option>
-                        <option value=1>Coordinatore</option>
-                        <option value=2>Gestore</option>
-                    </select>
+                <input required placeholder="Nome Utente" id="username" name="username" class="LoginField" type="text">
+                <input required placeholder="Password" id="password" name="password" class="LoginField" type="password">
+                <input required placeholder="Nome" id="nome" name="nome" class="LoginField" type="text">
+                <input required placeholder="Cognome" id="cognome" name="cognome" class="LoginField" type="text">
+                <select required id="coord" name="coord" class="LoginField">
+                    <option disabled selected value=-1>Seleziona un coordinatore</option>
+                </select>
+                <div row>
                     <zam-spacer></zam-spacer>
-                    <div class="ButtonSpacer" row>
-                        <zam-spacer></zam-spacer>
-                        <input disabled class="LoginButton" id="zam-submit" type="submit" value="Crea utente">    
-                    </div>
+                    <input disabled class="LoginButton" id="zam-submit" type="submit" value="Crea utente">    
+                </div>
             </form>
             <zam-spacer></zam-spacer>
         </div>  
