@@ -13,20 +13,23 @@ let ZAMUserCard = {
         deleteButton.className = "delete-button";
         deleteButton.innerText = "Elimina";
 
+        var userID = data.id;
+
         deleteButton.onclick = () => {
-            //var dialog = confirm("Sei sicuro di voler cancellare questa prenotazione?");
+            var dialog = confirm(`Sei sicuro di voler cancellare l'utente ${data.nome} ${data.cognome}?`);
 
-            //if(dialog) {
-            //    var auth = new ZAMAuth();
+            if(dialog) {
+                var auth = new ZAMAuth();
 
-            //    auth.deleteBooking(bookingID, (data) => {
-            //        if(data.success) {
-            //            location.reload();
-            //        } else {
-            //            alert("Errore nella cancellazione!");
-            //        }
-            //    });
-            //}
+                auth.deleteUser(userID, (data) => {
+                    console.log(data);
+                    if(data.success) {
+                        location.reload();
+                    } else {
+                        alert("Errore nella cancellazione!");
+                    }
+                });
+            }
         };
 
         var editButton = document.createElement("button");

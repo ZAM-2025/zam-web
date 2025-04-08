@@ -177,6 +177,36 @@ b{
     align-content: center;
 }
 
+#Landing{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#LandingLogo{
+    margin-bottom: 0px;
+    width: auto;
+    height: 156px;
+}
+
+#LandingButton{
+    font-weight: bold;
+    height: 0px;
+    width: 160px;
+    background-color: white;
+    color: var(--Nero);
+    font-size: 20px;
+    font-family: SF_Pro_Display_Regular;
+    border: none;
+    padding: 6px;
+    border-radius: var(--Login-Button-CR);
+    cursor: pointer;
+    letter-spacing: 1px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
 #EsciAccount {
     display: none;
     width: 100%;
@@ -400,7 +430,7 @@ zam-icon {
 }
 
 .Accedi {
-    display: flex;
+    display: none;
     flex-direction: var(--Accedi-Dir);
 
     width: var(--Accedi-Width);
@@ -904,7 +934,7 @@ zam-booking-card p {
     position: fixed;
     bottom: 0px;
     right: 0px;
-    opacity: 25%;
+    opacity: 50%;
     z-index: 15;
     width: fit-content;
     font-size: x-large;

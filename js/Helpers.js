@@ -46,7 +46,14 @@ addEventListener("load", () => {
         debugMarker.innerText = "DEBUG";
 
         debugMarker.onmouseover = () => {
-            debugMarker.innerText = "Pagina caricata in " + loadTime + "ms";
+            debugMarker.innerText = "Caricatamento: " + loadTime + "ms";
+            var auth = new ZAMAuth();
+            auth.getUserInfo((data) => {
+                debugMarker.innerHTML += "<br>";
+                debugMarker.innerText += "Utente: " + data.username;
+                debugMarker.innerHTML += "<br>";
+                debugMarker.innerText += "Tipo: " + data.type;
+            });
         };
 
         debugMarker.onmouseout = () => {

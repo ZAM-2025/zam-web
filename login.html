@@ -1,16 +1,25 @@
 <html>
     <head>
         <title>ZAM | Accedi</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--css-->
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="lib/zamcaptcha-js/css/zamcaptcha.css">
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+        <!--Js-->
         <script type="text/javascript" src="js/Helpers.js"></script>
         <script type="text/javascript" src="lib/zam-auth/zam-auth.js"></script>
         <script type="text/javascript" src="js/Login.js"></script>
         <script type="text/javascript" src="lib/zamcaptcha-js/js/zamcaptcha.js"></script>
+        <script type="text/javascript" src="js/Landing.js"></script>
     </head>
     <body class="LoginBody">
+        <div id="Landing">
+            <img id="LandingLogo" src = "svg/ZAM.svg">
+            <button type="button" id="LandingButton" id="zam-continue" onclick="EsciLanding()">Accedi</button>  
+        </div>
         <div class="Accedi">
             <div class="AccediContainer">
                 <img class="ZAMLogo" src = "svg/ZAM.svg">

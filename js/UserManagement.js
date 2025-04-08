@@ -156,7 +156,7 @@ function RedirLogin() {
 }
 
 async function FillUserInfo() {
-    var auth = new ZAMAuth();;
+    var auth = new ZAMAuth();
 
     let status = await auth.getUserInfo((data) => {
         if(data.success) {
@@ -228,11 +228,18 @@ window.addEventListener("load", () => {
     FillUserInfo();
     var auth = new ZAMAuth();
 
-    var prenotazioni = document.getElementById("prenotazioni");
+    var dipendenti = document.getElementById("dipendenti");
+    var coordinatori = document.getElementById("coordinatori");
 
-    auth.getUserInfoByType(ZAMUserTypeInt.DIPENDENTE, (data) => {
+    auth.getUserInfoByType(ZAMUserType.DIPENDENTE, (data) => {
         for(var user of data.list) {
-            ZAMUserCard.create(user, prenotazioni);
+            ZAMUserCard.create(user, dipendenti);
+        }
+    });
+
+    auth.getUserInfoByType(ZAMUserType.COORDINATORE, (data) => {
+        for(var user of data.list) {
+            ZAMUserCard.create(user, coordinatori);
         }
     });
 });
