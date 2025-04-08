@@ -44,12 +44,20 @@ function SendLogin(data) {
     let password = data.target.password.value;
     let nome = data.target.nome.value;
     let cognome = data.target.cognome.value;
-    let coord = data.target.coord.value;
+    var coord;
+
+    let type = GetType();
+    var typeString = Object.values(ZAMUserType)[type];
+    if(typeString == ZAMUserType.COORDINATORE) {
+        coord = null;
+    } else {
+        coord = data.target.coord.value;
+    }
 
     console.log(coord);
 
     var auth = new ZAMAuth();
-    auth.newUser(username, password, nome, cognome, GetType(), coord, (response) => {
+    auth.newUser(username, password, nome, cognome, type, coord, (response) => {
         if(response.success) {
             RedirUserPage();
         } else {
@@ -88,7 +96,17 @@ window.addEventListener("load", () => {
         }
     });
 
-    setInterval(() => {
-        ValidateLogin(userElem.value, passElem.value, nomeElem.value, cognomeElem.value, coordElem.value, continueButton);
-    }, 200);
+    if(typeString == ZAMUserType.COORDINATORE) {
+        coordElem.remove();
+    }
+
+    if(typeString == ZAMUserType.COORDINATORE) {
+        setInterval(() => {
+            ValidateLogin(userElem.value, passElem.value, nomeElem.value, cognomeElem.value, null, continueButton);
+        }, 200);
+    } else {
+        setInterval(() => {
+            ValidateLogin(userElem.value, passElem.value, nomeElem.value, cognomeElem.value, coordElem.value, continueButton);
+        }, 200);
+    }
 });
