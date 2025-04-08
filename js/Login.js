@@ -30,11 +30,9 @@ function RedirHome() {
 function ContinueAccedi() {
     var Prossimo = document.getElementById("ContinuaCaptcha");
     var Precedente = document.getElementById("ContinuaAccedi");
-    var submitButton = document.getElementById("zam-submit");
 
     Prossimo.style.display = "flex";
     Precedente.style.display = "none";
-    EnableButton(submitButton);
 
     document.getElementsByClassName("AccediTextTitolo")[0].innerHTML = "Captcha"
     document.getElementsByClassName("AccediText")[0].innerHTML = "Prima di accedere al portale, dobbiamo verificare che tu non sia un robot"
@@ -45,6 +43,8 @@ function ContinueAccedi() {
 
         if(data.success) {
             __captchaID = data.id;
+            document.getElementsByClassName('zamcaptcha-button')[0].type = "submit";
+            document.getElementsByClassName('zamcaptcha-button')[0].click();
         }
     });
 
