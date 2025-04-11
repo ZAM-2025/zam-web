@@ -954,7 +954,7 @@ zam-booking-card p {
     font-size: x-large;
     color: var(--Bianco);
     background-color: var(--GrigioChiaro);
-    cursor: pointer;
+    cursor: crosshair;
 }
 
 .add-button {
