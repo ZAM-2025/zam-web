@@ -1,4 +1,4 @@
-window.addEventListener("load", () => {
+function UserManagement() {
     var auth = new ZAMAuth();
 
     var dipendenti = document.getElementById("dipendenti");
@@ -15,4 +15,8 @@ window.addEventListener("load", () => {
             ZAMUserCard.create(user, coordinatori);
         }
     });
+}
+
+window.addEventListener("load", () => {
+    ZAMSidebar.load(UserManagement);
 });

@@ -3,5 +3,5 @@ function HomePage() {
 }
 
 window.addEventListener("load", () => {
-    HomePage();
+    ZAMSidebar.load(HomePage);
 });

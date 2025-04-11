@@ -14,5 +14,5 @@ function FillPrenotazioni() {
 }
 
 window.addEventListener("load", () => {
-    FillPrenotazioni();
+    ZAMSidebar.load(FillPrenotazioni);
 });

@@ -71,7 +71,7 @@ addEventListener("load", () => {
         debugMarker.innerText = "DEBUG";
 
         debugMarker.onmouseover = () => {
-            debugMarker.innerText = "Caricatamento: " + loadTime + "ms";
+            debugMarker.innerText = "Page Load: " + loadTime + "ms";
             var auth = new ZAMAuth();
             auth.getUserInfo((data) => {
                 debugMarker.innerHTML += "<br>";
