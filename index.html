@@ -31,55 +31,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body style="overflow-x: hidden;">
-        <zam-sidebar id="zam-sidebar">
-            <zam-icon id="sidebar-icon"></zam-icon>
-            <img id="sidebar-iconBig" src = "svg/ZAM.svg">
-
-            <zam-spacer></zam-spacer>
- 
-            <!--TODO (per erica?): usare un bottone con onclick così è bad practice in HTML!-->
-            <!--sostituisci i button con un link e usa href invece di chiamare delle funzioni JS per niente :P-->
-            <button onclick="Helpers.redir('./prenotazioni.html')" zam-conditional="!gest" id="PulsanteIcona">
-                <img src="svg/Confirmation_number.svg" style="width:29px;height:auto;"/>
-                <h1 id="SidebarText">Prenotazioni</h1>
-            </button>
-            <!--<Coordinatori>-->
-            <button onclick="Helpers.redir('./gestore.html')" zam-conditional="gest" id="PulsanteIcona">
-                <img src="svg/Manage_Accounts.svg" style="width:29px;height:auto;"/>
-                <h1 id="SidebarText">Gestione Utenti</h1>
-            </button>
-            <button onclick="Helpers.redir('./wip.html')" zam-conditional="coord|gest" id="PulsanteIcona">
-                <img src="svg/Groups.svg" style="width:29px;height:auto;"/>
-                <h1 id="SidebarText">Gestione Prenotazioni</h1>
-            </button>
-            <button onclick="Helpers.redir('./wip.html')" zam-conditional="gest" id="PulsanteIcona">
-                <img src="svg/Edit.svg" style="width:29px;height:auto;"/>
-                <h1 id="SidebarText">Gestione Assets</h1>
-            </button>
-            <!--
-            <button onclick="Helpers.redir('./wip.html')" id="PulsanteIcona">
-                <img src="svg/Accessibility.svg" style="width:29px;height:auto;"/>
-                <h1 id="SidebarText">Accessibilit&agrave;</h1>
-            </button>
-            -->
-            <!--</Coordinatori>-->
-            <button onclick="Helpers.redir('./wip.html')" id="PulsanteIcona">
-                <img src="svg/Settings.svg" style="width:29px;height:auto;"/>
-                <h1 id="SidebarText">Impostazioni</h1>
-            </button>
-
-            <zam-spacer></zam-spacer>
-
-            <button id="PulsanteIcona" style="height: 70px; align-items: center;">
-                <img id="SidebarAccIcon" src = "svg/Account.svg" style="width:auto;height:29px;"/>
-                <div id="Sidebar-Account">
-                    <h1 id="SidebarAccTitle">Caricamento...</h1>
-                    <h1 id="SidebarAccDesc">Gestione Account</h1>
-                </div>
-                <button onclick="LogOut()" id="EsciAccount">
-                    <h1>Esci</h1>
-                </button>
-            </button>
-        </zam-sidebar>
+        <script>LoadSidebar()</script>
     </body>
 </html>

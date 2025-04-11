@@ -443,6 +443,20 @@ zam-icon {
     box-shadow: var(--Generic-Shadow);   
 }
 
+.NewUser {
+    display: flex;
+    flex-direction: var(--Accedi-Dir);
+
+    width: var(--Accedi-Width);
+    height: var(--Accedi-Height);
+
+    background-color: var(--GrigioScuro);
+    border-radius: var(--Accedi-CR);
+
+    color: var(--Bianco);
+    box-shadow: var(--Generic-Shadow);   
+}
+
 .AccediContainer {
     display: flex;
     flex-direction: column;

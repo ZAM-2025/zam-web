@@ -42,6 +42,16 @@ let ZAMUserCard = {
         };
 
         card.appendChild(title);
+
+        if(data.type == ZAMUserType.DIPENDENTE && data.coord != null) {
+            console.log(`coordinatore di ${data.nome}: ${data.coord.nome} ${data.coord.cognome}`)
+
+            var subtitle = document.createElement("p");
+            subtitle.innerText = `Coordinatore: ${data.coord.nome} ${data.coord.cognome}`;
+
+            card.appendChild(subtitle);
+        }
+
         card.appendChild(spacer);
         card.appendChild(editButton);
         card.appendChild(deleteButton);
