@@ -14,6 +14,13 @@ function ValidateLogin(user, pass, nome, cognome, coord, elem) {
     }
 }
 
+function GetUserID() {
+    var url = new URL(location.href);
+    var id = parseInt(url.searchParams.get("id"));
+
+    return id;
+}
+
 function GetType() {
     var url = new URL(location.href);
     var type = parseInt(url.searchParams.get("type"));
@@ -57,7 +64,7 @@ function SendLogin(data) {
     console.log(coord);
 
     var auth = new ZAMAuth();
-    auth.newUser(username, password, nome, cognome, type, coord, (response) => {
+    auth.editUser(username, GetUserID(), password, nome, cognome, type, coord, (response) => {
         if (response.success) {
             RedirUserPage();
         } else {

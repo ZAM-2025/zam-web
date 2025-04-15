@@ -37,8 +37,8 @@ let ZAMUserCard = {
         editButton.innerText = "Modifica";
 
         editButton.onclick = () => {
-            var bookingSidebar = new BookingSidebar();
-            bookingSidebar.add(assetName, startTime, endTime, !isBooked, bookingID, true);
+            let userType = Object.values(ZAMUserType).indexOf(data.type);
+            Helpers.redir(`./edituser.html?type=${userType}&id=${userID}`);
         };
 
         card.appendChild(title);
