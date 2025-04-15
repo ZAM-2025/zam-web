@@ -1,5 +1,5 @@
 let ZAMBookingCard = {
-    create: function(data, container) {
+    create: function(data, container, isOld) {
         console.log(data);
         var card = document.createElement("zam-booking-card");
         
@@ -29,40 +29,56 @@ let ZAMBookingCard = {
 
         var spacer = document.createElement("zam-spacer");
 
-        var deleteButton = document.createElement("button");
-        deleteButton.className = "delete-button";
-        deleteButton.innerText = "Elimina";
+        if(isOld == undefined || isOld == null) {
+            var deleteButton = document.createElement("button");
+            deleteButton.className = "delete-button";
+            deleteButton.innerText = "Elimina";
+    
+            deleteButton.onclick = () => {
+                var dialog = confirm("Sei sicuro di voler cancellare questa prenotazione?");
+    
+                if(dialog) {
+                    var auth = new ZAMAuth();
+    
+                    auth.deleteBooking(bookingID, (data) => {
+                        if(data.success) {
+                            location.reload();
+                        } else {
+                            alert("Errore nella cancellazione!");
+                        }
+                    });
+                }
+            };
+    
+            var editButton = document.createElement("button");
+            editButton.className = "edit-button";
+            editButton.innerText = "Modifica";
+    
+            editButton.onclick = () => {
+                var bookingSidebar = new BookingSidebar();
+                bookingSidebar.add(assetName, startTime, endTime, !isBooked, bookingID, true);
+            };
+    
+            card.appendChild(title);
+            card.appendChild(info);
+            card.appendChild(spacer);
+            card.appendChild(editButton);
+            card.appendChild(deleteButton);
+        } else if(isOld === true) {
+            var rebookButton = document.createElement("button");
+            rebookButton.className = "edit-button";
+            rebookButton.innerText = "Riprenota";
+    
+            rebookButton.onclick = () => {
+                var bookingSidebar = new BookingSidebar();
+                bookingSidebar.add(assetName, null, null, !isBooked, data.assetID, false);
+            };
 
-        deleteButton.onclick = () => {
-            var dialog = confirm("Sei sicuro di voler cancellare questa prenotazione?");
-
-            if(dialog) {
-                var auth = new ZAMAuth();
-
-                auth.deleteBooking(bookingID, (data) => {
-                    if(data.success) {
-                        location.reload();
-                    } else {
-                        alert("Errore nella cancellazione!");
-                    }
-                });
-            }
-        };
-
-        var editButton = document.createElement("button");
-        editButton.className = "edit-button";
-        editButton.innerText = "Modifica";
-
-        editButton.onclick = () => {
-            var bookingSidebar = new BookingSidebar();
-            bookingSidebar.add(assetName, startTime, endTime, !isBooked, bookingID, true);
-        };
-
-        card.appendChild(title);
-        card.appendChild(info);
-        card.appendChild(spacer);
-        card.appendChild(editButton);
-        card.appendChild(deleteButton);
+            card.appendChild(title);
+            card.appendChild(info);
+            card.appendChild(spacer);
+            card.appendChild(rebookButton);
+        }
 
         container.appendChild(card);
     }

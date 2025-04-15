@@ -216,7 +216,6 @@ let ZAMSidebar = {
     
     load: function(callback) {
         Helpers.readFile("./templates/sidebar.html", (data) => {
-            console.log(data);
             document.body.innerHTML += data;
             
             var sidebarIcon = document.getElementById("sidebar-icon");
