@@ -3,7 +3,13 @@ class BookingSidebar extends HTMLElement {
         super();
     }
 
-    add(assetName, start, end, status, assetID, isEdit) {
+    add(assetName, start, end, status, assetID, isEdit, shouldReload) {
+        if(shouldReload != undefined && shouldReload != null) {
+            this.shouldReload = shouldReload;
+        } else {
+            this.shouldReload = false;
+        }
+
         var sideContainer = document.createElement("div");
         sideContainer.className = "booking-row";
         sideContainer.setAttribute("top", "");
@@ -183,6 +189,10 @@ class BookingSidebar extends HTMLElement {
         // fa abbastanza schifo ma who cares
         setTimeout(() => {
             this.remove();
+            
+            if(this.shouldReload === true) {
+                window.location.reload();
+            }
         }, 240);
 
         this.setAttribute("closing", "");

@@ -207,6 +207,10 @@ b{
     justify-content: center;
 }
 
+#AccountUtente{
+    font-family: SF_Pro_Display_Bold;
+}
+
 #EsciAccount {
     display: none;
     width: 100%;

@@ -71,7 +71,7 @@ let ZAMBookingCard = {
     
             rebookButton.onclick = () => {
                 var bookingSidebar = new BookingSidebar();
-                bookingSidebar.add(assetName, null, null, !isBooked, data.assetID, false);
+                bookingSidebar.add(assetName, null, null, !isBooked, data.assetID, false, true);
             };
 
             card.appendChild(title);
