@@ -38,7 +38,7 @@ let ZAMUserCard = {
 
         editButton.onclick = () => {
             let userType = Object.values(ZAMUserType).indexOf(data.type);
-            Helpers.redir(`./edituser.html?type=${userType}&id=${userID}`);
+            Helpers.redir(`./edituser.html?type=${userType}&id=${userID}&user=${data.username}&nome=${data.nome}&cognome=${data.cognome}&coord=${data.coord.id}`);
         };
 
         card.appendChild(title);

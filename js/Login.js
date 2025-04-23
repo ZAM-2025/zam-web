@@ -37,7 +37,7 @@ function ContinueAccedi() {
     document.getElementsByClassName("AccediTextTitolo")[0].innerHTML = "Captcha"
     document.getElementsByClassName("AccediText")[0].innerHTML = "Prima di accedere al portale, dobbiamo verificare che tu non sia un robot"
 
-    var session = new CaptchaSession("http", "localhost:8080", "lib/zamcaptcha-js", (data) => {
+    var session = new CaptchaSession("http", window.location.hostname + ":8080", "lib/zamcaptcha-js", (data) => {
         console.log(data);
         __captchaID = null;
 

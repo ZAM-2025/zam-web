@@ -1,3 +1,5 @@
+var _callbacks = [];
+
 let Helpers = {
     isMobile: function() {
         if(window.matchMedia("(max-width: 800px)").matches) {
@@ -30,7 +32,7 @@ let Helpers = {
         }
     },
     isDebug: function() {
-        return location.hostname == "localhost"
+        return location.hostname == "localhost" || location.hostname == "172.20.10.5";
     },
     // Lettura di un file. Se presente, utilizza il percorso relativo indicato.
     // Parametri di chiamata:
@@ -57,34 +59,43 @@ let Helpers = {
 
         return false;
     },
+    onLoad: function(callback) {
+        _callbacks.push(callback);
+
+        window.addEventListener("load", () => {
+            _callbacks.forEach((c) => {
+                c();
+            })
+        });
+    }
 }
 
-addEventListener("load", () => {
-    if(Helpers.isDebug()) {
-        console.log("Running on localhost");
-
-        const pageEnd = performance.mark('pageEnd');
-        const loadTime = parseInt(pageEnd.startTime);
-
-        var debugMarker = document.createElement("div");
-        debugMarker.className = "debug-marker";
-        debugMarker.innerText = "DEBUG";
-
-        debugMarker.onmouseover = () => {
-            debugMarker.innerText = "Page Load: " + loadTime + "ms";
-            var auth = new ZAMAuth();
-            auth.getUserInfo((data) => {
-                debugMarker.innerHTML += "<br>";
-                debugMarker.innerText += "Utente: " + data.username;
-                debugMarker.innerHTML += "<br>";
-                debugMarker.innerText += "Tipo: " + data.type;
-            });
-        };
-
-        debugMarker.onmouseout = () => {
-            debugMarker.innerText = "DEBUG";
-        }
-        
-        document.body.appendChild(debugMarker);
-    }
-});
+//if(Helpers.isDebug()) {
+//    console.log("Running on localhost");
+//
+//    const pageEnd = performance.mark('pageEnd');
+//    const loadTime = parseInt(pageEnd.startTime);
+//
+//    var debugMarker = document.createElement("div");
+//    debugMarker.className = "debug-marker";
+//    debugMarker.innerText = "DEBUG";
+//
+//    debugMarker.onmouseover = () => {
+//        console.log("aaa");
+//        debugMarker.innerText = "Page Load: " + loadTime + "ms";
+//
+//        var auth = new ZAMAuth();
+//        auth.getUserInfo((data) => {
+//            debugMarker.innerHTML += "<br>";
+//            debugMarker.innerText += "Utente: " + data.username;
+//            debugMarker.innerHTML += "<br>";
+//            debugMarker.innerText += "Tipo: " + data.type;
+//        });
+//    };
+//    
+//    debugMarker.onmouseout = () => {
+//        debugMarker.innerText = "DEBUG";
+//    }
+//    
+//    document.body.appendChild(debugMarker);
+//}

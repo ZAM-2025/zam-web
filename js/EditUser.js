@@ -44,6 +44,27 @@ function RedirUserPage() {
     window.location.href = "./gestore.html";
 }
 
+function GetUserParams() {
+    var url = new URL(location.href);
+
+    var user = url.searchParams.get("user");
+    if(user == null || user == undefined) {
+        return null;
+    }
+
+    var nome = url.searchParams.get("nome");
+    var cognome = url.searchParams.get("cognome");
+
+    var coord = parseInt(url.searchParams.get("coord"));
+
+    return {
+        user: user,
+        nome: nome,
+        cognome: cognome,
+        coord: coord
+    };
+}
+
 function SendLogin(data) {
     data.preventDefault();
 
@@ -98,6 +119,15 @@ window.addEventListener("load", () => {
                 coordOption.innerText = `${c.nome} ${c.cognome}`;
 
                 coordElem.appendChild(coordOption);
+            }
+
+            let params = GetUserParams();
+            console.log(params);
+            if(params != null) {
+                userElem.value = params.user;
+                nomeElem.value = params.nome;
+                cognomeElem.value = params.cognome;
+                coordElem.value = params.coord;
             }
         } else {
             // TODO: Gestire errori bene
