@@ -1,15 +1,34 @@
+/**
+ * Progetto ZAM - Anno Scolastico 2024/2025
+ * Modulo: Frontend Web
+ * File: BookingSidebar.js
+ * Scopo: Sidebar sul lato destro per la prenotazione degli asset
+ */
+
 class BookingSidebar extends HTMLElement {
     constructor() {
         super();
     }
 
+    /**
+     * 
+     * @param {string} assetName Nome dell'asset da prenotare
+     * @param {string | null} start Stringa con l'orario d'inizio (HH:MM) o null
+     * @param {string | null} end Stringa con l'orario di fine (HH:MM) o null
+     * @param {boolean} status True se l'asset non è prenotato attualmente
+     * @param {number} assetID ID dell'asset nel DB
+     * @param {boolean | null} isEdit (Optional) True se la prenotazione viene modificata, False se viene creata
+     * @param {boolean | null} shouldReload (Optional) Se è True, la pagina viene ricaricata dopo la prenotazione
+     */
     add(assetName, start, end, status, assetID, isEdit, shouldReload) {
+        // Salvo il valore nell'oggetto per usarlo nel callback
         if(shouldReload != undefined && shouldReload != null) {
             this.shouldReload = shouldReload;
         } else {
             this.shouldReload = false;
         }
 
+        // Generazione del layout nel DOM
         var sideContainer = document.createElement("div");
         sideContainer.className = "booking-row";
         sideContainer.setAttribute("top", "");
@@ -81,9 +100,6 @@ class BookingSidebar extends HTMLElement {
 
             console.log(startDateTime, endDateTime);
 
-            var bookStart = `${startHour}:${startMinute}`;
-            var bookEnd = `${endHour}:${endMinute}`;
-
             var auth = new ZAMAuth();
 
             if(isEdit != undefined && isEdit != null && isEdit === true) {
@@ -99,6 +115,7 @@ class BookingSidebar extends HTMLElement {
                     }
                 });
             } else {
+                // Invio la prenotazione al server
                 auth.book(assetID, startDateTime, endDateTime, (result) => {
                     console.log(result);
     

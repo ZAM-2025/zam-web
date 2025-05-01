@@ -1,4 +1,9 @@
-// TODO: Implementare vera validazione
+/**
+ * Progetto ZAM - Anno Scolastico 2024/2025
+ * Modulo: Frontend Web
+ * File: EditUser.js
+ * Scopo: Modifica degli utenti coordinati
+ */
 
 function ValidateLogin(user, pass, nome, cognome, coord, elem) {
     if (user && pass && nome && cognome && coord != -1) {
