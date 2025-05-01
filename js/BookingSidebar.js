@@ -72,6 +72,82 @@ class BookingSidebar extends HTMLElement {
         this.appendChild(sideContainer);
         this.appendChild(statusContainer);
 
+        var picker = new ZAMPicker();
+
+        picker.add([
+            {
+                label: "Prenota",
+                id: 0
+            },
+            {
+                label: "Occupati",
+                id: 1
+            }
+        ]);
+
+        this.appendChild(picker);
+
+        var form = this.addForm(assetName, start, end, status, assetID, isEdit, shouldReload);
+
+        picker.setOnChange((value) => {
+            console.log(form);
+            form.remove();
+            if(value == 0) {
+                form = this.addForm(assetName, start, end, status, assetID, isEdit, shouldReload);
+            } else if (value == 1) {
+                form = this.addList(assetName, start, end, status, assetID, isEdit, shouldReload);
+            }
+        });
+
+        document.body.appendChild(this);
+    }
+
+    addList(assetName, start, end, status, assetID, isEdit, shouldReload) {
+        var book = document.createElement("div");
+        book.className = "book-form";
+        book.setAttribute("alt", "");
+
+        var auth = new ZAMAuth();
+        auth.getBookingsByAsset(assetID, (bookings) => {
+            console.log(bookings);
+
+            for(var booking of bookings) {
+                var container = document.createElement("div");
+                container.className = "booking-container";
+
+                var prenotatoLabel = document.createElement("p");
+                prenotatoLabel.innerText = "Prenotato da:";
+
+                var nomeLabel = document.createElement("h3");
+                nomeLabel.setAttribute("bold", "");
+                nomeLabel.innerText = booking.nome + " " + booking.cognome;
+
+                var dateLabel = document.createElement("p");
+                var bookingDate = new Date(booking.body.inizio);
+                var endDate = new Date(booking.body.fine);
+
+                var startTime = String(bookingDate.getHours()).padStart(2, '0') + ":" + String(bookingDate.getMinutes()).padStart(2, '0');
+                var endTime = String(endDate.getHours()).padStart(2, '0') + ":" + String(endDate.getMinutes()).padStart(2, '0');
+
+                var day = Helpers.getHTMLDayString(bookingDate.getDay());
+
+                dateLabel.innerHTML = day;
+                dateLabel.innerText += ` ${bookingDate.getDate()}/${bookingDate.getMonth() + 1}`;
+                dateLabel.innerText += ` | ${startTime} - ${endTime}`;
+
+                container.appendChild(prenotatoLabel);
+                container.appendChild(nomeLabel);
+                container.appendChild(dateLabel);
+
+                book.appendChild(container);
+            }
+        });
+
+        this.appendChild(book);
+        return book;
+    }
+
+    addForm(assetName, start, end, status, assetID, isEdit, shouldReload) {
         var bookForm = document.createElement("form");
         bookForm.className = "book-form";
 
@@ -128,22 +204,6 @@ class BookingSidebar extends HTMLElement {
             }
         };
 
-        var prenotaLabelContainer = document.createElement("div");
-        prenotaLabelContainer.className = "prenota-label-container";
-
-        var spacerLeft = document.createElement("div");
-        spacerLeft.className = "prenota-label-spacer";
-
-        var spacerRight = document.createElement("div");
-        spacerRight.className = "prenota-label-spacer";
-
-        var prenotaLabel = document.createElement("h1");
-        prenotaLabel.innerText = "Prenota";
-
-        prenotaLabelContainer.appendChild(spacerLeft);
-        prenotaLabelContainer.appendChild(prenotaLabel);
-        prenotaLabelContainer.appendChild(spacerRight);
-
         var dataLabel = document.createElement("div");
         dataLabel.innerHTML = "<h2 nopad>Data</h2>";
         dataLabel.innerHTML += "<p italic nopad>Seleziona la data di prenotazione</p>";
@@ -186,7 +246,6 @@ class BookingSidebar extends HTMLElement {
 
         buttonContainer.appendChild(submitButton);
 
-        bookForm.appendChild(prenotaLabelContainer);
         bookForm.appendChild(dataLabel);
         bookForm.appendChild(inputDate);
         bookForm.appendChild(oraLabel);
@@ -199,7 +258,7 @@ class BookingSidebar extends HTMLElement {
 
         this.appendChild(bookForm);
 
-        document.body.appendChild(this);
+        return bookForm;
     }
 
     close() {

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="js/ZAMPicker.js"></script>
+</head>
+<body>
+    <script>
+        window.onload = () => {
+            var p = new ZAMPicker([
+                {
+                    label: "Test 1",
+                    id: 0
+                },
+                {
+                    label: "Test 2",
+                    id: 1
+                }
+            ]);
+            p.add(document.body);
+            p.setOnChange((value) => {
+                console.log(value);
+            })
+        }
+    </script>
+</body>
+</html>
