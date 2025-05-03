@@ -74,32 +74,70 @@ class BookingSidebar extends HTMLElement {
 
         var picker = new ZAMPicker();
 
-        picker.add([
-            {
-                label: "Prenota",
-                id: 0
-            },
-            {
-                label: "Occupati",
-                id: 1
+        new ZAMAuth().getUserInfo((data) => {
+            var doLoadBook = true;
+
+            switch(data.type) {
+                case ZAMUserType.GESTORE: 
+                {
+                    doLoadBook = false;
+                    picker.add([
+                        {
+                            label: "Occupati",
+                            id: 1
+                        }
+                    ]);
+                }   
+                break;
+
+                case ZAMUserType.COORDINATORE:
+                {
+                    picker.add([
+                        {
+                            label: "Prenota",
+                            id: 0
+                        },
+                        {
+                            label: "Occupati",
+                            id: 1
+                        }
+                    ]);
+                }
+                break;
+
+                case ZAMUserType.DIPENDENTE:
+                {
+                    picker.add([
+                        {
+                            label: "Prenota",
+                            id: 0
+                        }
+                    ]);
+                }
+                break;
             }
-        ]);
 
-        this.appendChild(picker);
+            this.appendChild(picker);
 
-        var form = this.addForm(assetName, start, end, status, assetID, isEdit, shouldReload);
-
-        picker.setOnChange((value) => {
-            console.log(form);
-            form.remove();
-            if(value == 0) {
+            var form;
+            if(doLoadBook) {
                 form = this.addForm(assetName, start, end, status, assetID, isEdit, shouldReload);
-            } else if (value == 1) {
+            } else {
                 form = this.addList(assetName, start, end, status, assetID, isEdit, shouldReload);
             }
-        });
 
-        document.body.appendChild(this);
+            picker.setOnChange((value) => {
+                console.log(form);
+                form.remove();
+                if(value == 0) {
+                    form = this.addForm(assetName, start, end, status, assetID, isEdit, shouldReload);
+                } else if (value == 1) {
+                    form = this.addList(assetName, start, end, status, assetID, isEdit, shouldReload);
+                }
+            });
+
+            document.body.appendChild(this);
+        });
     }
 
     addList(assetName, start, end, status, assetID, isEdit, shouldReload) {
