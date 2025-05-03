@@ -923,7 +923,7 @@ zam-booking-card p {
     height: calc(var(--Booking-Card-Height) + var(--Booking-Card-Pad) * 2); 
     overflow-x: scroll;
     white-space: nowrap;
-    width: calc(100vw - var(--Sidebar-Width-Closed) + (var(--Sidebar-Pad) / 2));
+    width: 90vw;
 
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: none;  /* Firefox */
