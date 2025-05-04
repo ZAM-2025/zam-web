@@ -615,6 +615,10 @@ div[row] {
     color: var(--Rosso);
 }
 
+.indicatore[nd] {
+    color: var(--GrigioChiarissimo);
+}
+
 .indicatore[libero] {
     color: var(--Verde);
 }

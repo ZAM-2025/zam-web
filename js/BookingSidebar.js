@@ -146,8 +146,18 @@ class BookingSidebar extends HTMLElement {
         book.setAttribute("alt", "");
 
         var auth = new ZAMAuth();
-        auth.getBookingsByAsset(assetID, (bookings) => {
+        auth.getByAssetCoord(assetID, (bookings) => {
             console.log(bookings);
+
+            if(bookings.length == 0) {
+                book.style.justifyContent = "center";
+                book.style.alignItems = "center";
+
+                var _title = document.createElement("h3");
+                _title.innerText = "Nessuna prenotazione.";
+
+                book.appendChild(_title);
+            }
 
             for(var booking of bookings) {
                 var container = document.createElement("div");
