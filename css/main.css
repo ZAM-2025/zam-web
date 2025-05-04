@@ -1120,3 +1120,48 @@ zam-picker {
 #SidebarAccDesc > a {
     text-decoration: none;
 }
+
+#AccountUtente{
+    font-family: SF_Pro_Display_Bold;
+    margin-bottom: 0px;
+    margin-top: 55px;
+}
+
+#AccountTipo{
+    margin-top: 0px;
+    margin-bottom: 14px;
+}
+
+#AccountPulsanti {
+    height: 36px;
+    display: flex;
+}
+#AccountPulsante {
+    font-family: SF_Pro_Display_Regular;
+    width: 116px;
+    padding: 7px;
+    border-radius: 23px;
+    border: none;
+    margin-right: 24px;
+    font-size: 14px;
+    cursor: pointer;
+}
+#AccountPulsanteEsci {
+    display: flex;
+    font-family: SF_Pro_Display_Regular;
+    width: 116px;
+    padding: 7px;
+    border-radius: 23px;
+    border: none;
+    margin-right: 12px;
+    background-color: var(--Rosso);
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.row_modifica {
+    gap: 10px !important;
+}

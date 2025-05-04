@@ -36,11 +36,17 @@
                 <zam-title>Profilo Utente</zam-title>
             </zam-row>
 
-            <zam-row>
+            <zam-row style="gap:10px !important;">
                 <img class="ZAMLogo" src = "svg/Account.svg" style="height: 110px">
                 <div>
-                    <h1 id="AccountUtente">$UTENTE</h1>
-                    <h2 id="AccountTipo">Profilo $TIPO</h2>
+                    <div>
+                        <h1 id="AccountUtente">$UTENTE</h1>
+                        <h2 id="AccountTipo">Profilo $TIPO</h2>
+                    </div>
+                    <div id="AccountPulsanti">
+                        <button id="AccountPulsante">Modifica Profilo</button>
+                        <button onclick="Helpers.logOut()" id="AccountPulsanteEsci"><img class="ZAMLogo" src = "svg/Logout.svg" style="height: 20px">Esci</button>
+                    </div>
                 </div>
             </zam-row>
 

@@ -12,6 +12,7 @@ let Helpers = {
         location.href = url;
     },
     getHTMLDayString: function(day) {
+        console.log(day);
         switch(day) {
             case 1:
                 return "Luned&igrave;";
@@ -25,7 +26,7 @@ let Helpers = {
                 return "Venerd&igrave;";
             case 6:
                 return "Sabato";
-            case 7:
+            case 0:
                 return "Domenica";
             default:
                 return "Giorno non valido";
@@ -66,6 +67,17 @@ let Helpers = {
             _callbacks.forEach((c) => {
                 c();
             })
+        });
+    },
+    logOut: async function() {
+        var auth = new ZAMAuth();
+        
+        await auth.logout((data) => {
+            if(data.success) {
+                window.location.reload();
+            } else {
+                console.log("Failed to log out");
+            }
         });
     }
 }
