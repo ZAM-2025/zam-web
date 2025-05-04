@@ -11,6 +11,7 @@
 
     --Rosso: #AF0202;
     --RossoScuro: #640000;
+    --RossoScurissimo: rgb(31, 0, 0);
     --Verde: #02AF16;
 
     --BiancoTrasparente: #ffffff21;
@@ -846,13 +847,12 @@ input[type="date"], input[type="time"] {
 
 zam-body {
     margin: 0;
-    padding: 10px;
 
     display: flex;
     flex-direction: column;
 
-    height: 100vh;
-    width: calc(100vw - var(--Sidebar-Width-Closed) + (var(--Sidebar-Pad) / 2));
+    height: calc(100vh - var(--Body-Margin) * 2);
+    width: 90vw;
 
     margin-left: var(--Body-Margin);
     margin-top: var(--Body-Margin);
@@ -1072,4 +1072,47 @@ zam-picker {
     padding: 10px;
 
     line-height: 1px;
+}
+
+.scroll-container {
+    display: flex;
+    flex-direction: column;
+
+    overflow-y: scroll;
+
+    width: 100%;
+
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+
+    gap: 10px;
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.asset-container {
+    display: flex;
+    flex-direction: column;
+
+    line-height: 2px;
+    padding-left: 10px;
+
+    background-color: var(--GrigioScuro);
+    border: 1px solid var(--GrigioChiaro);
+
+    border-radius: 10px;
+
+    color: white;
+    cursor: pointer;
+}
+
+.asset-container[active=false] {
+    background-color: var(--RossoScurissimo);
+    border: 1px solid var(--RossoScuro);
+}
+
+#SidebarAccDesc > a {
+    text-decoration: none;
 }
