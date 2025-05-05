@@ -20,7 +20,7 @@ class BookingSidebar extends HTMLElement {
      * @param {boolean | null} isEdit (Optional) True se la prenotazione viene modificata, False se viene creata
      * @param {boolean | null} shouldReload (Optional) Se è True, la pagina viene ricaricata dopo la prenotazione
      */
-    add(assetName, start, end, status, assetID, isEdit, shouldReload) {
+    add(assetName, start, end, status, assetID, isEdit, shouldReload, isActive, isCoord) {
         // Salvo il valore nell'oggetto per usarlo nel callback
         if(shouldReload != undefined && shouldReload != null) {
             this.shouldReload = shouldReload;
@@ -56,14 +56,18 @@ class BookingSidebar extends HTMLElement {
         statusText.innerText = "Stato Attuale: ";
         statusContainer.appendChild(statusText);
 
+        var _active = !(isActive != undefined && isActive != null && isActive == false);
+
         // TODO: gestire altri stati?
-        if(status) {
+        if(!_active) {
+            statusText.innerHTML += "<span nd>Non disponibile</span>&nbsp;"
+        } else if(status) {
             statusText.innerHTML += "<span green>Libero</span>&nbsp;"
         } else {
             statusText.innerHTML += "<span red>Occupato</span>&nbsp;"
         }
 
-        if(start != null && end != null) {
+        if(start != null && end != null && _active) {
             var timeText = document.createElement("p");
             timeText.innerText = `(${start} - ${end})`;
             statusContainer.appendChild(timeText);
@@ -121,7 +125,7 @@ class BookingSidebar extends HTMLElement {
 
             var form;
             if(doLoadBook) {
-                form = this.addForm(assetName, start, end, status, assetID, isEdit, shouldReload);
+                form = this.addForm(assetName, start, end, status, assetID, isEdit, shouldReload, isCoord);
             } else {
                 form = this.addList(assetName, start, end, status, assetID, isEdit, shouldReload);
             }
@@ -130,7 +134,7 @@ class BookingSidebar extends HTMLElement {
                 console.log(form);
                 form.remove();
                 if(value == 0) {
-                    form = this.addForm(assetName, start, end, status, assetID, isEdit, shouldReload);
+                    form = this.addForm(assetName, start, end, status, assetID, isEdit, shouldReload, isCoord);
                 } else if (value == 1) {
                     form = this.addList(assetName, start, end, status, assetID, isEdit, shouldReload);
                 }
@@ -195,7 +199,7 @@ class BookingSidebar extends HTMLElement {
         return book;
     }
 
-    addForm(assetName, start, end, status, assetID, isEdit, shouldReload) {
+    addForm(assetName, start, end, status, assetID, isEdit, shouldReload, isCoord) {
         var bookForm = document.createElement("form");
         bookForm.className = "book-form";
 
@@ -228,16 +232,29 @@ class BookingSidebar extends HTMLElement {
 
             if(isEdit != undefined && isEdit != null && isEdit === true) {
                 // qui assetID prende il ruolo di bookingID
-                auth.editBooking(assetID, startDateTime, endDateTime, (result) => {
-                    console.log(result);
-    
-                    if(result.success) {
-                        container.close();
-                        window.location.reload();
-                    } else {
-                        errorLabel.innerText = `Impossibile prenotare ${assetName}:\n${result.message}`;
-                    }
-                });
+                if(isCoord != undefined && isCoord != null && isCoord == true) {
+                    auth.editBookingFor(assetID, startDateTime, endDateTime, (result) => {
+                        console.log(result);
+        
+                        if(result.success) {
+                            container.close();
+                            window.location.reload();
+                        } else {
+                            errorLabel.innerText = `Impossibile prenotare ${assetName}:\n${result.message}`;
+                        }
+                    });
+                } else {
+                    auth.editBooking(assetID, startDateTime, endDateTime, (result) => {
+                        console.log(result);
+        
+                        if(result.success) {
+                            container.close();
+                            window.location.reload();
+                        } else {
+                            errorLabel.innerText = `Impossibile prenotare ${assetName}:\n${result.message}`;
+                        }
+                    });
+                }
             } else {
                 // Invio la prenotazione al server
                 auth.book(assetID, startDateTime, endDateTime, (result) => {

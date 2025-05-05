@@ -72,6 +72,8 @@
     --Booking-Card-Pad: 10px;
 
     --Scheme: dark;
+
+    --Title-Size: 50px;
 }
 
 @media (prefers-color-scheme: light) {
@@ -113,6 +115,8 @@
         --Booking-Top: 0px;
         --Booking-MaxWidth: calc(100vw - var(--Booking-Pad) * 2);
         --Booking-Width: calc(100vw - var(--Booking-Pad) * 2);
+
+        --Title-Size: 22px;
     }
 
     .zamcaptcha-img {
@@ -855,13 +859,12 @@ zam-body {
     display: flex;
     flex-direction: column;
 
-    height: calc(100vh - var(--Body-Margin) * 2);
-    width: 90vw;
+    width: calc(100vw - var(--Sidebar-Width-Closed) - 2 * var(--Sidebar-Pad));
 
     margin-left: var(--Body-Margin);
     margin-top: var(--Body-Margin);
 
-    position: fixed;
+    position: absolute;
     top: 0;
     left: calc(var(--Sidebar-Width-Closed) + (var(--Sidebar-Pad) / 2));
 
@@ -869,7 +872,7 @@ zam-body {
 }
 
 zam-title {
-    font-size: 50px;
+    font-size: var(--Title-Size);
     font-family: SF_Pro_Display_Bold;
 }
 
@@ -924,10 +927,9 @@ zam-booking-card p {
 }
 
 *[cards] {
-    height: calc(var(--Booking-Card-Height) + var(--Booking-Card-Pad) * 2); 
     overflow-x: scroll;
     white-space: nowrap;
-    width: 90vw;
+    width: calc(100vw - var(--Sidebar-Width-Closed) - 2 * var(--Sidebar-Pad));
 
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: none;  /* Firefox */
@@ -1108,6 +1110,8 @@ zam-picker {
 
     border-radius: 10px;
 
+    margin-right: var(--Sidebar-Pad);
+
     color: white;
     cursor: pointer;
 }
@@ -1160,6 +1164,44 @@ zam-picker {
     justify-content: center;
     font-size: 14px;
     cursor: pointer;
+}
+
+#AccountCoordinatori {
+    margin-top: 30px !important;
+    font-size: 38px !important;
+    display: none;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+#AccountPadre {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+}
+
+#AccountQuadrato {
+    background-color: var(--GrigioScuro);
+    width: 280px;
+    border-radius: 8px;
+}
+
+#AccountQuadratoSopra {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#AccountQuadratoNome {
+    margin-left: 5px;
+    font-family: 'SF_Pro_Display_Regular';
+    font-size: 20px;
+}
+
+#AccountQuadratoTitolo {
+    margin-left: 15px;
+    font-size: 20px;
 }
 
 .row_modifica {

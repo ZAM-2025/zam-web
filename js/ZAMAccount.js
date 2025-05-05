@@ -20,7 +20,48 @@ function FillAccount() {
 
         if(data.coord != null && data.coord != undefined) {
             accountTipo.innerText += ` | Coordinatore: ${data.coord.nome} ${data.coord.cognome}`;
-        }
+        };
+
+        if(data.type == ZAMUserType.COORDINATORE) {
+            var Padre = document.getElementById("AccountCoordinatori");
+            Padre.style.display = "Flex";
+
+            //Creazione dei suoi sottomessi
+            auth.getCoordinatedUsers((users) => {
+                for(var user of users) {
+                    var AccountQuadrato = document.createElement("div");
+                    var AccountQuadratoSopra = document.createElement("div")
+                    var ZAMLogo = document.createElement("img");
+                    var AccountQuadratoNome = document.createElement("h1")
+                    var AccountQuadratoTitolo = document.createElement("h1")
+                    var AccountPulsante = document.createElement
+
+                    AccountQuadrato.id = "AccountQuadrato";
+                    AccountQuadratoSopra.id = "AccountQuadratoSopra";
+                    ZAMLogo.className = "ZAMLogo";
+                    AccountQuadratoNome.id = "AccountQuadratoNome";
+                    AccountQuadratoTitolo.id = "AccountQuadratoTitolo";
+
+                    ZAMLogo.src = "svg/Account.svg"
+                    ZAMLogo.style = "height: 50px; font-size: 5px; margin-left: 12px;"
+
+                    AccountQuadratoNome.innerHTML = `${user.nome} ${user.cognome}`;
+                    AccountQuadratoTitolo.innerHTML = "Prenotazioni Recenti:";
+
+                    document.getElementById("AccountPadre").appendChild(AccountQuadrato);
+                    AccountQuadrato.appendChild(AccountQuadratoSopra);
+                    AccountQuadratoSopra.appendChild(ZAMLogo)
+                    AccountQuadratoSopra.appendChild(AccountQuadratoNome)
+                    AccountQuadrato.appendChild(AccountQuadratoTitolo);
+
+                    auth.getActiveBookings((Books) => {
+                        for(var book of Books) {
+                            console.log(book)
+                        }
+                    })
+                };
+            });
+        };
     });
 }
 

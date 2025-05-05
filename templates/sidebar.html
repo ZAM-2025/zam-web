@@ -15,7 +15,7 @@
         <img src="svg/Manage_Accounts.svg" style="width:29px;height:auto;"/>
         <h1 id="SidebarText">Gestione Utenti</h1>
     </button>
-    <button onclick="Helpers.redir('./wip.html')" zam-conditional="coord|gest" id="PulsanteIcona">
+    <button onclick="Helpers.redir('./gestioneprenotazioni.html')" zam-conditional="coord|gest" id="PulsanteIcona">
         <img src="svg/Groups.svg" style="width:29px;height:auto;"/>
         <h1 id="SidebarText">Gestione Prenotazioni</h1>
     </button>
@@ -29,9 +29,9 @@
 
     <button id="PulsanteIcona" style="height: 70px; align-items: center;">
         <img id="SidebarAccIcon" src = "svg/Account.svg" style="width:auto;height:29px;"/>
-        <div id="Sidebar-Account">
+        <div onclick="Helpers.redir('./account.html')" id="Sidebar-Account">
             <h1 id="SidebarAccTitle">Caricamento...</h1>
-            <h1 id="SidebarAccDesc"><a href="./account.html">Gestione Account &gt;</a></h1>
+            <h1 id="SidebarAccDesc">Gestione Account &gt;</h1>
         </div>
         <button onclick="ZAMSidebar.logOut()" id="EsciAccount">
             <h1>Esci</h1>

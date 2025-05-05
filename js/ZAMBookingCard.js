@@ -1,5 +1,5 @@
 let ZAMBookingCard = {
-    create: function(data, container, isOld) {
+    create: function(data, container, isOld, isCoord) {
         console.log(data);
         var card = document.createElement("zam-booking-card");
         
@@ -9,6 +9,7 @@ let ZAMBookingCard = {
         var bookingEnd = data.booking.fine;
         var bookingID = data.booking.id;
         var isBooked = data.booking.booked;
+        var isActive = data.active;
 
         var bookingDate = new Date(bookingStart);
         var bookingDay = Helpers.getHTMLDayString(bookingDate.getDay());
@@ -40,13 +41,23 @@ let ZAMBookingCard = {
                 if(dialog) {
                     var auth = new ZAMAuth();
     
-                    auth.deleteBooking(bookingID, (data) => {
-                        if(data.success) {
-                            location.reload();
-                        } else {
-                            alert("Errore nella cancellazione!");
-                        }
-                    });
+                    if(isCoord != undefined && isCoord != null && isCoord == true) {
+                        auth.deleteBookingFor(bookingID, (data) => {
+                            if(data.success) {
+                                location.reload();
+                            } else {
+                                alert("Errore nella cancellazione!");
+                            }
+                        });
+                    } else {
+                        auth.deleteBooking(bookingID, (data) => {
+                            if(data.success) {
+                                location.reload();
+                            } else {
+                                alert("Errore nella cancellazione!");
+                            }
+                        });
+                    }
                 }
             };
     
@@ -56,7 +67,7 @@ let ZAMBookingCard = {
     
             editButton.onclick = () => {
                 var bookingSidebar = new BookingSidebar();
-                bookingSidebar.add(assetName, startTime, endTime, !isBooked, bookingID, true);
+                bookingSidebar.add(assetName, startTime, endTime, !isBooked, bookingID, true, true, isActive, isCoord);
             };
     
             card.appendChild(title);
@@ -71,7 +82,7 @@ let ZAMBookingCard = {
     
             rebookButton.onclick = () => {
                 var bookingSidebar = new BookingSidebar();
-                bookingSidebar.add(assetName, null, null, !isBooked, data.assetID, false, true);
+                bookingSidebar.add(assetName, null, null, !isBooked, data.assetID, false, true, isActive);
             };
 
             card.appendChild(title);

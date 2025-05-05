@@ -24,39 +24,19 @@
         <script type="text/javascript" src="js/Sidebar.js"></script>
         <script type="text/javascript" src="js/ZamIcon.js"></script>
         <script type="text/javascript" src="js/ZAMConditional.js"></script>
-        <script type="text/javascript" src="js/ZAMAccount.js"></script>
+        <script type="text/javascript" src="js/ZAMBookingCard.js"></script>
+        <script type="text/javascript" src="js/BookingSidebar.js"></script>
+        <script type="text/javascript" src="js/GestionePrenotazioni.js"></script>
         <script type="text/javascript" src="js/ZAMPicker.js"></script>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body style="background-color: var(--GrigioMedio); overflow-x: hidden;">
-        <zam-body>
+        <zam-body id="main">
             <zam-row>
                 <zam-back onclick="Helpers.redir('./index.html')"></zam-back>
-                <zam-title>Profilo Utente</zam-title>
+                <zam-title>Gestione Prenotazioni</zam-title>
             </zam-row>
-
-            <zam-row style="gap:10px !important;">
-                <img class="ZAMLogo" src = "svg/Account.svg" style="height: 110px">
-                <div>
-                    <div>
-                        <h1 id="AccountUtente">$UTENTE</h1>
-                        <h2 id="AccountTipo">Profilo $TIPO</h2>
-                    </div>
-                    <div id="AccountPulsanti">
-                        <button id="AccountPulsante">Modifica Profilo</button>
-                        <button onclick="Helpers.logOut()" id="AccountPulsanteEsci"><img class="ZAMLogo" src = "svg/Logout.svg" style="height: 20px">Esci</button>
-                    </div>
-                </div>
-            </zam-row>
-
-            <zam-row id="AccountCoordinatori">
-                <zam-title>Utenti Coordinati</zam-title>
-                <div id="AccountPadre">
-                </div>
-            </zam-row>
-
-            <zam-spacer></zam-spacer>
         </zam-body>
     </body>
 </html>
