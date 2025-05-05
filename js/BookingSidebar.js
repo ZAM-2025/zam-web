@@ -127,7 +127,7 @@ class BookingSidebar extends HTMLElement {
             if(doLoadBook) {
                 form = this.addForm(assetName, start, end, status, assetID, isEdit, shouldReload, isCoord);
             } else {
-                form = this.addList(assetName, start, end, status, assetID, isEdit, shouldReload);
+                form = this.addList(assetName, start, end, status, assetID, isEdit, shouldReload, _active);
             }
 
             picker.setOnChange((value) => {
@@ -136,7 +136,7 @@ class BookingSidebar extends HTMLElement {
                 if(value == 0) {
                     form = this.addForm(assetName, start, end, status, assetID, isEdit, shouldReload, isCoord);
                 } else if (value == 1) {
-                    form = this.addList(assetName, start, end, status, assetID, isEdit, shouldReload);
+                    form = this.addList(assetName, start, end, status, assetID, isEdit, shouldReload, _active);
                 }
             });
 
@@ -144,12 +144,58 @@ class BookingSidebar extends HTMLElement {
         });
     }
 
-    addList(assetName, start, end, status, assetID, isEdit, shouldReload) {
+    addList(assetName, start, end, status, assetID, isEdit, shouldReload, isActive) {
         var book = document.createElement("div");
         book.className = "book-form";
         book.setAttribute("alt", "");
 
         var auth = new ZAMAuth();
+
+        auth.getUserInfo((user) => {
+            if(user.type != ZAMUserType.GESTORE) {
+                return;
+            }
+
+            var disableButton = document.createElement("button");
+            disableButton.className = "disable-button";
+    
+            if(isActive) {
+                disableButton.innerText = "Disabilita Asset";
+            } else {
+                disableButton.setAttribute("_disabled", "");
+                disableButton.innerText = "Abilita Asset";
+            }
+    
+            disableButton.addEventListener("click", (e) => {
+                console.log(e);
+    
+                if(isActive) {
+                    new ZAMAuth().disableAsset(assetID, (data) => {
+                        if(data.success) {
+                            e.target.innerText = "Fatto. Ricarico...";
+    
+                            setTimeout(() => {
+                                window.location.reload();
+                            }, 100);
+                        }
+                    });
+                } else {
+                    console.log("asdasd")
+                    new ZAMAuth().enableAsset(assetID, (data) => {
+                        if(data.success) {
+                            e.target.innerText = "Fatto. Ricarico...";
+    
+                            setTimeout(() => {
+                                window.location.reload();
+                            }, 100);
+                        }
+                    });
+                }
+            }); 
+    
+            book.appendChild(disableButton);
+        });
+
         auth.getByAssetCoord(assetID, (bookings) => {
             console.log(bookings);
 

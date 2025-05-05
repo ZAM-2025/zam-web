@@ -30,6 +30,12 @@ function GestionePrenotazioni() {
                 var uid = elem.getAttribute("uid");
     
                 await auth.getBookedBy(uid, (data) => {
+                    if(data.bookings.length == 0) {
+                        var _title = document.createElement("h3");
+                        _title.innerText = "Nessuna prenotazione.";
+                        _title.setAttribute("gray", "");
+                        elem.appendChild(_title);
+                    }
                     for(var booking of data.bookings) {
                         console.log(elem);
                         ZAMBookingCard.create(booking, elem, undefined, true);
